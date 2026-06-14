@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphic Design — Monologue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
+<style>
+  /* ── BOOK DESIGN — CHARACTERS ──────────────── */
+  .characters-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+    padding: 24px 0 32px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .character-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 12px 0 14px;
+  }
+
+  .character-sketch-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sketch-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .sketch-arrow {
+    font-size: 20px;
+    color: var(--muted);
+    padding-top: 120px;
+    flex-shrink: 0;
+  }
+
+  .character-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-style: italic;
+    font-family: 'IM Fell English', serif;
+  }
+
+  /* ── COLOUR PALETTE + TYPE ─────────────────── */
+  .palette-type-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0 var(--col-gap);
+    padding: 24px 0 32px;
+    border-bottom: 1px solid var(--ink);
+  }
+  @font-face {
+  font-family: 'Energy Station';
+  src: url('EnergyStation.ttf') format('truetype');
+}
+  @font-face {
+  font-family: 'WonderCity';
+  src: url('Wondercity.otf') format('opentype');
+}
+  .swatches {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 0.5px solid var(--ink);
+  }
+
+  .swatch-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 0.5px solid var(--paper-mid);
+    padding-right: 14px;
+    transition: background 0.15s;
+  }
+  .swatch-item:last-child { border-bottom: none; }
+  .swatch-item:hover { background: var(--paper-dark); }
+
+  .swatch {
+    height: 48px;
+    width: 48px;
+    flex-shrink: 0;
+  }
+
+  .swatch-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .swatch-hex {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  .type-col {}
+
+  .type-entry {
+    border-bottom: 0.5px solid var(--paper-mid);
+    padding: 16px 0;
+  }
+  .type-entry:last-child { border-bottom: none; }
+
+  .type-role {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .type-specimen {
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .type-detail {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── LAYOUTS ───────────────────────────────── */
+  .layout-spread {
+    padding: 20px 0 12px;
+  }
+
+  .layout-spread-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--col-gap);
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  /* ── MOCKUPS ───────────────────────────────── */
+  .mockups-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--col-gap);
+    padding: 20px 0 48px;
+  }
+
+  .mockup-item.large {
+    grid-column: span 2;
+  }
+
+  /* ── BRANDING PROJECT NUMBER TAG ───────────── */
+  .project-number {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 960px) {
+    .characters-grid { grid-template-columns: 1fr; }
+    .palette-type-grid { grid-template-columns: 1fr; }
+    .layout-spread-2 { grid-template-columns: 1fr; }
+    .mockups-grid { grid-template-columns: 1fr; }
+    .mockup-item.large { grid-column: span 1; }
+    .sketch-arrow { padding-top: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span id="today-date"></span>
+    <span>Est. 2024 · New Delhi</span>
+    <span>Design · Film · Branding</span>
+  </div>
+  <div class="masthead-main">
+    <div class="vol-line">Vol. I &nbsp;·&nbsp; No. 1 &nbsp;·&nbsp; The Creative Portfolio</div>
+    <h1 class="logo-title">Monologue</h1>
+    <div class="ornament">✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦</div>
+    <p class="logo-sub">"Where design meets intention, and every page tells a story."</p>
+  </div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="graphic-design.html" class="active">Graphic Design</a>
+    <a href="film.html">Short Film</a>
+    <a href="clients.html">Client Work</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <!-- PAGE TITLE -->
+  <div class="page-title-block">
+    <span class="kicker">Section 02</span>
+    <h2 class="page-headline">Graphic Design</h2>
+    <p class="page-deck">A body of work spanning identity, illustration, and the printed page. Each discipline is a different lens on the same fundamental question: how does form communicate meaning?</p>
+  </div>
+
+  <!-- SUB-NAV TABS -->
+  <div class="sub-nav-wrap">
+    <div class="sub-nav">
+      <button class="sub-btn active" data-tab="all">All Work</button>
+      <button class="sub-btn" data-tab="branding" id="branding">Branding</button>
+      <button class="sub-btn" data-tab="illustration">Illustration</button>
+      <button class="sub-btn" data-tab="books" id="books">Book Design</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       BRANDING
+  ════════════════════════════════════════════ -->
+  <div class="tab-section" data-section="branding">
+    <div class="section-header">
+      <span class="section-label">Branding</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Identity Systems</span>
+    </div>
+
+    <!-- BRANDING PROJECT 01 — image left, text right -->
+<div class="work-feature">
+  <div class="work-feature-img">
+    <a href="brand-project-01.html">
+      <div class="img-placeholder dark tall">
+        <span class="ph-label">Branding Project 01</span>
+        <span class="ph-sub">Replace with your image</span>
+      </div>
+    </a>
+  </div>
+  <div class="work-feature-text">
+    <span class="project-number">Project 01</span>
+    <span class="kicker">Brand Identity</span>
+    <h3 class="work-title"><a href="brand-project01.html">Project One<br>Name Here</a></h3>
+    <p class="work-body">Describe this branding project — the client, the challenge, and the concept you built around. What problem were you solving? What made this identity work?</p>
+    <p class="work-body">Talk about the system you created — the mark, the colour story, the typeface choices, and how they all hold together.</p>
+    <div class="work-meta">
+      <span class="meta-item"><strong>Client</strong> Client Name</span>
+      <span class="meta-item"><strong>Year</strong> 2024</span>
+      <span class="meta-item"><strong>Scope</strong> Logo, Type, Colour, Collateral</span>
+    </div>
+    <a href="brand-project-01.html" style="display:inline-block; margin-top:20px; font-family:'Source Serif 4',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:3px; text-decoration:none;">View Project →</a>
+  </div>
+</div>
+
+<!-- BRANDING PROJECT 02 — image right, text left (reverse) -->
+<div class="work-feature reverse">
+  <div class="work-feature-img">
+    <a href="brand-project-02.html">
+      <div class="img-placeholder mid tall">
+        <span class="ph-label">Branding Project 02</span>
+        <span class="ph-sub">Replace with your image</span>
+      </div>
+    </a>
+  </div>
+  <div class="work-feature-text">
+    <span class="project-number">Project 02</span>
+    <span class="kicker">Visual System</span>
+    <h3 class="work-title"><a href="brand-project02.html">Project Two<br>Name Here</a></h3>
+    <p class="work-body">Describe this second branding project — a different client, a different brief, a different visual answer. What made this one unique compared to the first?</p>
+    <p class="work-body">Describe the visual language — the palette, the form, the decisions that gave this brand its character.</p>
+    <div class="work-meta">
+      <span class="meta-item"><strong>Client</strong> Client Name</span>
+      <span class="meta-item"><strong>Year</strong> 2024</span>
+      <span class="meta-item"><strong>Scope</strong> Branding, Collateral, Packaging</span>
+    </div>
+    <a href="brand-project-02.html" style="display:inline-block; margin-top:20px; font-family:'Source Serif 4',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:3px; text-decoration:none;">View Project →</a>
+  </div>
+</div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       ILLUSTRATION
+  ════════════════════════════════════════════ -->
+  <div class="tab-section" data-section="illustration">
+    <div class="section-header">
+      <span class="section-label">Illustration</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Drawn Works</span>
+    </div>
+
+    <div class="work-feature reverse">
+      <div class="work-feature-text">
+        <span class="kicker">Featured Series</span>
+        <h3 class="work-title">Series or Project Name</h3>
+        <p class="work-body">Describe your illustration work — the style, the themes, the medium. Is this editorial, conceptual, decorative? What world does it inhabit?</p>
+        <div class="work-meta">
+          <span class="meta-item"><strong>Medium</strong> Digital / Hand-drawn</span>
+          <span class="meta-item"><strong>Year</strong> 2024</span>
+          <span class="meta-item"><strong>Type</strong> Editorial Illustration</span>
+        </div>
+      </div>
+      <div class="work-feature-img">
+        <div class="img-placeholder light tall">
+          <span class="ph-label" style="color:var(--muted)">Illustration Work</span>
+          <span class="ph-sub" style="color:var(--muted)">Replace with your illustration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="masonry-grid">
+      <div class="masonry-item tall"><div class="img-placeholder mid"></div><span class="col-tag">Series</span><h4 class="grid-title">Illustration 01</h4></div>
+      <div class="masonry-item"><div class="img-placeholder light"></div><span class="col-tag">Editorial</span><h4 class="grid-title">Illustration 02</h4></div>
+      <div class="masonry-item"><div class="img-placeholder dark"></div><span class="col-tag">Conceptual</span><h4 class="grid-title">Illustration 03</h4></div>
+      <div class="masonry-item tall"><div class="img-placeholder light"></div><span class="col-tag">Decorative</span><h4 class="grid-title">Illustration 04</h4></div>
+      <div class="masonry-item"><div class="img-placeholder mid"></div><span class="col-tag">Series</span><h4 class="grid-title">Illustration 05</h4></div>
+      <div class="masonry-item"><div class="img-placeholder dark"></div><span class="col-tag">Print</span><h4 class="grid-title">Illustration 06</h4></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       BOOK DESIGN
+  ════════════════════════════════════════════ -->
+  <div class="tab-section" data-section="books">
+    <div class="section-header">
+      <span class="section-label">Book Design</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Print & Editorial</span>
+    </div>
+
+    <!-- COVER IMAGE + STORY/CONCEPT -->
+    <div class="work-feature" style="display: flex; gap: 3rem; align-items: flex-start;">
+  
+  <div class="work-feature-img" style="flex: 0 0 300px;">
+    <img src="./assets/images/Book_design/book_cover.jpg" alt="Book Title" 
+         style="width: 300px; height: auto; object-fit: cover; display: block;">
+  </div>
+
+  <div class="work-feature-text" style="flex: 1; min-width: 0;">
+    <span class="kicker">Featured Publication</span>
+    <h3 class="work-title">What are we?</h3>
+    <p class="work-body">What Are We? explores the uncertain space between friendship and love — the emotions that exist when two people care deeply for each other but struggle to define what they truly are. The story focuses on quiet moments, emotional hesitation, and the comfort found within unspoken connections.</p>
+    <p class="work-body">The design was created to feel personal, youthful, and emotionally intimate. Bright yellow tones were used to represent warmth, nostalgia, and the comforting energy shared between the characters, while the handwritten typography adds a raw, diary-like quality to the publication. The layouts remain minimal and spacious to keep the focus on expressions, pauses, and emotional tension, allowing the visuals to communicate feelings that words often cannot express.</p>
+    <div class="work-meta">
+      <span class="meta-item"><strong>Year</strong> 2025</span>
+      <span class="meta-item"><strong>Design and Illustration</strong> Bhumi Chopra</span>
+      <span class="meta-item"><strong>Medium</strong> Print and Digital Publication </span>
+      <span class="meta-item"><strong>Category</strong> Book Design</span>
+    </div>
+  </div>
+    </div>
+  
+    <!-- CHARACTERS -->
+<div class="section-header">
+  <span class="section-label">Characters</span>
+  <hr class="section-rule-line">
+  <span class="section-label">Rough & Final Sketches</span>
+</div>
+
+<div class="characters-grid">
+
+  <!-- CHARACTER 01 -->
+  <div class="character-col">
+    <span class="kicker">Character 01</span>
+    <div class="character-row" style="display:flex; align-items:flex-start; gap:1rem;">
+
+      <div class="character-sketch-wrap" style="flex:1; max-width:200px;">
+        <img src="./assets/images/Book_design/rough_sketch1.jpg.png" alt="Character 01 Rough Sketch"
+             style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+        <span class="sketch-label">Rough</span>
+      </div>
+
+      <div class="sketch-arrow" style="align-self:center;">→</div>
+
+      <div class="character-sketch-wrap" style="flex:1; max-width:200px;">
+        <img src="./assets/images/Book_design/final1.jpg.png" alt="Character 01 Final"
+             style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+        <span class="sketch-label">Final</span>
+      </div>
+
+    </div>
+    <p class="character-desc">Lily — Lily finds comfort in solitude, often keeping her emotions hidden behind distance and quiet independence.</p>
+  </div>
+
+  <!-- CHARACTER 02 -->
+  <div class="character-col">
+    <span class="kicker">Character 02</span>
+    <div class="character-row" style="display:flex; align-items:flex-start; gap:1rem;">
+
+      <div class="character-sketch-wrap" style="flex:1; max-width:200px;">
+        <img src="./assets/images/Book_design/rough_sketch2.jpg.png" alt="Character 02 Rough Sketch"
+             style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+        <span class="sketch-label">Rough</span>
+      </div>
+
+      <div class="sketch-arrow" style="align-self:center;">→</div>
+
+      <div class="character-sketch-wrap" style="flex:1; max-width:200px;">
+        <img src="./assets/images/Book_design/final2.jpg.png" alt="Character 02 Final"
+             style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+        <span class="sketch-label">Final</span>
+      </div>
+
+    </div>
+    <p class="character-desc">Alex — Alex loves with patience and sincerity, remaining gentle and understanding even through uncertainty.</p>
+  </div>
+
+</div>
+    
+    <!-- COLOUR PALETTE + TYPOGRAPHY -->
+    <div class="section-header">
+      <span class="section-label">Colour Palette & Typography</span>
+      <hr class="section-rule-line">
+    </div>
+
+    <div class="palette-type-grid">
+
+      <!-- SWATCHES -->
+      <div class="palette-col">
+        <span class="kicker" style="margin-bottom:14px;display:block;">Colour Palette</span>
+        <div class="swatches">
+          <div class="swatch-item">
+            <div class="swatch" style="background:#e8d631;"></div>
+            <span class="swatch-name">Golden Memory</span>
+            <span class="swatch-hex">#E8D631</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:#ff7171;"></div>
+            <span class="swatch-name">Quiet Pink</span>
+            <span class="swatch-hex">#F5F0E8</span>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:#ffffff"></div>
+            <span class="swatch-name">Blank Page</span>
+            <span class="swatch-hex">#FFFFFF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-rule" style="align-self:stretch;"></div>
+
+      <!-- TYPOGRAPHY -->
+      <div class="type-col">
+        <span class="kicker" style="margin-bottom:14px;display:block;">Typography</span>
+
+        <div class="type-entry">
+          <span class="type-role">Heading Typeface</span>
+          <p class="type-specimen" style="font-family:'Energy Station',sans-serif;font-size:32px;">Energy Station</p>
+          <span class="type-detail">DISPLAY · REGULAR · WHITE · MAIN TITLE</span>
+        </div>
+
+        <div class="type-entry">
+          <span class="type-role">Heading Typeface</span>
+          <p class="type-specimen" style="font-family:'Wondercity',sans-serif;font-size:32px;">Wondercity</p>
+          <span class="type-detail">HANDWRITTEN DISPLAY · REGULAR · WHITE & PINK · SUBTITLE & ACCENTS</span>
+        </div>
+
+        <div class="type-entry">
+          <span class="type-role">Body Typeface</span>
+          <p class="type-specimen" style="font-family:'Myriad-Pro',sans-serif;font-size:18px;line-height:1.5;">Myriad Pro — The quick brown fox jumps over the lazy dog.</p>
+          <span class="type-detail">SANS SERIF · REGULAR · WHITE · BODY TEXT & DESCRIPTIONS</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FULL LAYOUT -->
+    <div class="section-header">
+      <span class="section-label">Full Layout</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Interior Spreads</span>
+    </div>
+
+    <div class="layout-spread">
+      <img src="./assets/images/Book_design/full_layout.jpg" style="width:100%;height: auto;display:block;">
+      <span class="ph-label">Full Layout / Spread</span>
+    </div>
+
+    <!-- MOCKUPS -->
+<div class="section-header">
+  <span class="section-label">Mockups</span>
+  <hr class="section-rule-line">
+  <span class="section-label">In Context</span>
+</div>
+
+<div style="display:flex; flex-direction:column; gap:20px; padding:20px 0 48px;">
+
+  <!-- LARGE MOCKUP ON TOP -->
+  <div style="display:flex; flex-direction:column; gap:8px;">
+    <img src="./assets/images/Book_design/mockup_1.jpg" alt="Mockup 01"
+         style="width:100%; height:auto; display:block;">
+    <span style="font-family:'Source Serif 4',serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Mockup 01</span>
+  </div>
+
+  <!-- TWO SMALLER MOCKUPS BELOW -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <img src="./assets/images/Book_design/mockup_2.jpg" alt="Mockup 02"
+           style="width:100%; height:auto; display:block;">
+      <span style="font-family:'Source Serif 4',serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Mockup 02</span>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <img src="./assets/images/Book_design/mockup_3.jpg" alt="Mockup 03"
+           style="width:100%; height:auto; display:block;">
+      <span style="font-family:'Source Serif 4',serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Mockup 03</span>
+    </div>
+
+  </div>
+
+</div>
+  <!-- END BOOK DESIGN -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-logo">Monologue</span>
+    <span class="footer-copy">© 2026 · All rights reserved</span>
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="https://www.instagram.com/bhumiidesign/">Instagram</a>
+      <a href="https://www.behance.net/bhumichopra">Behance</a>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/main.js"></script>
+<script>
+  const subBtns = document.querySelectorAll('.sub-btn');
+  const sections = document.querySelectorAll('.tab-section');
+
+  function showSection(tab) {
+    sections.forEach(s => {
+      s.style.display = (tab === 'all' || s.dataset.section === tab) ? 'block' : 'none';
+    });
+    subBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  }
+
+  subBtns.forEach(btn => {
+    btn.addEventListener('click', () => showSection(btn.dataset.tab));
+  });
+
+  const hash = window.location.hash.replace('#', '');
+  if (['branding', 'illustration', 'books'].includes(hash)) {
+    showSection(hash);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Two — Monologue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
+<style>
+
+  /* ── BACK LINK ─────────────────────────────── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--paper-mid);
+    padding-bottom: 2px;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: 32px;
+    display: inline-flex;
+  }
+  .back-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* ── PROJECT HERO ──────────────────────────── */
+  .project-hero {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 0;
+    border-bottom: 1px solid var(--ink);
+    min-height: 480px;
+  }
+
+  .project-hero-image {
+    border-right: 1px solid var(--ink);
+  }
+
+  .project-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .project-hero-image .img-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+  }
+
+  .project-hero-meta {
+    padding: 40px 0 40px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .project-hero-meta .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .project-hero-meta .project-tagline {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .project-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 0.5px solid var(--paper-mid);
+  }
+
+  .pd-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--paper-mid);
+    gap: 12px;
+  }
+
+  .pd-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .pd-value {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* ── SECTION DIVIDER (reuse from about) ─────── */
+  .section-divider {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--ink);
+    border-top: 1px solid var(--ink);
+    margin-top: 0;
+  }
+
+  .sd-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 10px 20px 10px 0;
+    border-right: 0.5px solid var(--ink);
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  .sd-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .sd-right {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 20px;
+    border-left: 0.5px solid var(--ink);
+  }
+
+  /* ── OVERVIEW ──────────────────────────────── */
+  .project-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap, 48px);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .overview-col p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .overview-col p:last-child { margin-bottom: 0; }
+
+  /* ── COLOUR PALETTE ────────────────────────── */
+  .swatches {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 0.5px solid var(--ink);
+  }
+
+  .swatch-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 0.5px solid var(--paper-mid);
+    padding-right: 14px;
+    transition: background 0.15s;
+  }
+  .swatch-item:last-child { border-bottom: none; }
+  .swatch-item:hover { background: var(--paper-dark); }
+
+  .swatch {
+    height: 48px;
+    width: 48px;
+    flex-shrink: 0;
+  }
+
+  .swatch-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .swatch-hex {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  /* ── PALETTE + TYPE GRID ───────────────────── */
+  .palette-type-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0 var(--col-gap, 48px);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .type-entry {
+    border-bottom: 0.5px solid var(--paper-mid);
+    padding: 16px 0;
+  }
+  .type-entry:last-child { border-bottom: none; }
+
+  .type-role {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .type-specimen {
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .type-detail {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── FULL WIDTH IMAGE ──────────────────────── */
+  .full-image {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .full-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .full-image .img-placeholder {
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .img-caption {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 10px;
+    display: block;
+  }
+
+  /* ── TWO COLUMN IMAGES ─────────────────────── */
+  .two-col-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--col-gap, 48px);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .two-col-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .two-col-images .img-placeholder {
+    width: 100%;
+    min-height: 280px;
+  }
+
+  .img-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ── THREE COL IMAGES ──────────────────────── */
+  .three-col-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .three-col-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .three-col-images .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+  }
+
+  /* ── PULL QUOTE ────────────────────────────── */
+  .project-pull {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 40px 80px;
+    text-align: center;
+  }
+
+  .project-pull blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(17px, 2.2vw, 26px);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .project-pull cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* ── NEXT PROJECT ──────────────────────────── */
+  .next-project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--ink);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .next-project:hover { background: var(--paper-dark); margin: 0 -48px; padding: 32px 48px; }
+
+  .np-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .np-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .np-arrow {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--ink);
+  }
+
+  @media (max-width: 860px) {
+    .project-hero { grid-template-columns: 1fr; }
+    .project-hero-image { border-right: none; border-bottom: 1px solid var(--ink); }
+    .project-hero-image .img-placeholder { min-height: 300px; }
+    .project-hero-meta { padding: 24px 0; }
+    .project-overview { grid-template-columns: 1fr; }
+    .palette-type-grid { grid-template-columns: 1fr; }
+    .two-col-images { grid-template-columns: 1fr; }
+    .three-col-images { grid-template-columns: 1fr 1fr; }
+    .project-pull { padding: 32px 20px; }
+    .next-project:hover { margin: 0; padding: 32px 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span id="today-date"></span>
+    <span>Est. 2024 · New Delhi</span>
+    <span>Design · Film · Branding</span>
+  </div>
+  <div class="masthead-main">
+    <div class="vol-line">Vol. I &nbsp;·&nbsp; No. 1 &nbsp;·&nbsp; The Creative Portfolio</div>
+    <h1 class="logo-title">Monologue</h1>
+    <div class="ornament">✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦</div>
+    <p class="logo-sub">"Where design meets intention, and every page tells a story."</p>
+  </div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="graphic-design.html" class="active">Graphic Design</a>
+    <a href="film.html">Short Film</a>
+    <a href="clients.html">Client Work</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- BACK LINK -->
+  <div class="page-title-block" style="padding-bottom: 16px;">
+    <a href="graphic-design.html#branding" class="back-link">← Back to Graphic Design</a>
+    <span class="kicker">Branding · Project 02</span>
+    <h2 class="page-headline">Project Two Name</h2>
+  </div>
+
+  <!-- HERO: IMAGE LEFT · META RIGHT -->
+  <div class="project-hero">
+    <div class="project-hero-image">
+      <!--
+        Replace placeholder with your hero image:
+        <img src="images/brand1-hero.jpg" alt="Project Two Hero">
+      -->
+      <div class="img-placeholder dark tall" style="min-height:480px;">
+        <span class="ph-label">Hero Image</span>
+        <span class="ph-sub">Replace with your image</span>
+      </div>
+    </div>
+
+    <div class="project-hero-meta">
+      <div>
+        <h2 class="project-title">Project Two<br>Name Here</h2>
+        <p class="project-tagline">A one-line description of the brand concept.</p>
+      </div>
+
+      <div class="project-details-list">
+        <div class="pd-item">
+          <span class="pd-label">Client</span>
+          <span class="pd-value">Client Name</span>
+        </div>
+        <div class="pd-item">
+          <span class="pd-label">Year</span>
+          <span class="pd-value">2024</span>
+        </div>
+        <div class="pd-item">
+          <span class="pd-label">Scope</span>
+          <span class="pd-value">Logo · Type · Colour · Collateral</span>
+        </div>
+        <div class="pd-item">
+          <span class="pd-label">Industry</span>
+          <span class="pd-value">Industry Here</span>
+        </div>
+        <div class="pd-item">
+          <span class="pd-label">Tools</span>
+          <span class="pd-value">Illustrator · Photoshop</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section-divider">
+    <span class="sd-num">§ 01</span>
+    <span class="sd-label">Overview</span>
+    <span class="sd-right">The Brief &amp; Concept</span>
+  </div>
+
+  <div class="project-overview">
+    <div class="overview-col">
+      <p>Describe the client and the brief here — who they are, what they needed, and what problem this identity was designed to solve. Give the reader context about the brand's world and audience.</p>
+      <p>Talk about your initial thinking — what direction you explored first, and how the concept evolved. What was the central idea that gave this identity its meaning?</p>
+    </div>
+    <div class="overview-col">
+      <p>Describe the visual language you developed — the mark, the colour palette, the typefaces, and how all the pieces connect into a unified system. What decisions were made, and why?</p>
+      <p>Reflect on the outcome — how does the final identity represent the brand's values, personality, and ambition? What does it communicate at first glance?</p>
+    </div>
+  </div>
+
+  <!-- HERO FULL IMAGE -->
+  <div class="section-divider">
+    <span class="sd-num">§ 02</span>
+    <span class="sd-label">Identity</span>
+    <span class="sd-right">Logo &amp; Mark</span>
+  </div>
+
+  <div class="full-image">
+    <!--
+      <img src="images/brand1-logo.jpg" alt="Logo & Mark">
+    -->
+    <div class="img-placeholder mid" style="min-height:420px;">
+      <span class="ph-label">Logo / Mark</span>
+      <span class="ph-sub">Replace with your logo presentation</span>
+    </div>
+    <span class="img-caption">Logo system — primary mark, variations, and usage</span>
+  </div>
+
+  <!-- TWO COL — LOGO DETAIL + USAGE -->
+  <div class="two-col-images">
+    <div class="img-block">
+      <!--<img src="images/brand1-mark-detail.jpg" alt="Mark Detail">-->
+      <div class="img-placeholder dark" style="min-height:280px;">
+        <span class="ph-label">Mark Detail</span>
+      </div>
+      <span class="img-caption">Symbol detail — construction &amp; geometry</span>
+    </div>
+    <div class="img-block">
+      <!--<img src="images/brand1-wordmark.jpg" alt="Wordmark">-->
+      <div class="img-placeholder light" style="min-height:280px;">
+        <span class="ph-label">Wordmark</span>
+      </div>
+      <span class="img-caption">Wordmark — type treatment &amp; spacing</span>
+    </div>
+  </div>
+
+  <!-- COLOUR + TYPOGRAPHY -->
+  <div class="section-divider">
+    <span class="sd-num">§ 03</span>
+    <span class="sd-label">Colour &amp; Typography</span>
+    <span class="sd-right">Visual System</span>
+  </div>
+
+  <div class="palette-type-grid">
+
+    <!-- SWATCHES — edit colours to match your project -->
+    <div class="palette-col">
+      <span class="kicker" style="margin-bottom:14px;display:block;">Colour Palette</span>
+      <div class="swatches">
+        <div class="swatch-item">
+          <div class="swatch" style="background:#1c1c1c;"></div>
+          <span class="swatch-name">Colour One</span>
+          <span class="swatch-hex">#1C1C1C</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch" style="background:#f5f0e8;"></div>
+          <span class="swatch-name">Colour Two</span>
+          <span class="swatch-hex">#F5F0E8</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch" style="background:#8a6c00;"></div>
+          <span class="swatch-name">Colour Three</span>
+          <span class="swatch-hex">#8A6C00</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch" style="background:#d4c9b8;"></div>
+          <span class="swatch-name">Colour Four</span>
+          <span class="swatch-hex">#D4C9B8</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-rule" style="align-self:stretch;"></div>
+
+    <!-- TYPOGRAPHY — edit to match your project fonts -->
+    <div class="type-col">
+      <span class="kicker" style="margin-bottom:14px;display:block;">Typography</span>
+
+      <div class="type-entry">
+        <span class="type-role">Display / Heading</span>
+        <p class="type-specimen" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;">Display Typeface</p>
+        <span class="type-detail">DISPLAY · BOLD · PRIMARY HEADINGS</span>
+      </div>
+
+      <div class="type-entry">
+        <span class="type-role">Secondary / Accent</span>
+        <p class="type-specimen" style="font-family:'IM Fell English',serif;font-style:italic;font-size:24px;">Accent Typeface</p>
+        <span class="type-detail">SERIF ITALIC · SUBHEADINGS &amp; ACCENTS</span>
+      </div>
+
+      <div class="type-entry">
+        <span class="type-role">Body / Text</span>
+        <p class="type-specimen" style="font-family:'Libre Baskerville',serif;font-size:14px;line-height:1.6;">Body Typeface — The quick brown fox jumps over the lazy dog.</p>
+        <span class="type-detail">SERIF · REGULAR · BODY TEXT</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="project-pull">
+    <blockquote>"Write a short quote that captures the essence of this project or your design philosophy behind it."</blockquote>
+    <cite>Your name · Project Two Name</cite>
+  </div>
+
+  <!-- COLLATERAL / APPLICATIONS -->
+  <div class="section-divider">
+    <span class="sd-num">§ 04</span>
+    <span class="sd-label">Applications</span>
+    <span class="sd-right">Collateral &amp; Usage</span>
+  </div>
+
+  <div class="full-image">
+    <!--<img src="images/brand1-collateral.jpg" alt="Collateral">-->
+    <div class="img-placeholder dark" style="min-height:400px;">
+      <span class="ph-label">Brand Collateral</span>
+      <span class="ph-sub">Business cards, letterhead, packaging, etc.</span>
+    </div>
+    <span class="img-caption">Brand collateral — full system in use</span>
+  </div>
+
+  <div class="three-col-images">
+    <div class="img-block">
+      <!--<img src="images/brand1-app1.jpg" alt="Application 01">-->
+      <div class="img-placeholder mid" style="min-height:220px;">
+        <span class="ph-label">Application 01</span>
+      </div>
+      <span class="img-caption">Business card</span>
+    </div>
+    <div class="img-block">
+      <!--<img src="images/brand1-app2.jpg" alt="Application 02">-->
+      <div class="img-placeholder light" style="min-height:220px;">
+        <span class="ph-label">Application 02</span>
+      </div>
+      <span class="img-caption">Letterhead</span>
+    </div>
+    <div class="img-block">
+      <!--<img src="images/brand1-app3.jpg" alt="Application 03">-->
+      <div class="img-placeholder dark" style="min-height:220px;">
+        <span class="ph-label">Application 03</span>
+      </div>
+      <span class="img-caption">Packaging / other</span>
+    </div>
+  </div>
+
+  <!-- MOCKUPS -->
+  <div class="section-divider">
+    <span class="sd-num">§ 05</span>
+    <span class="sd-label">Mockups</span>
+    <span class="sd-right">In Context</span>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:20px; padding:40px 0 48px;">
+
+    <div class="img-block">
+      <!--<img src="images/brand1-mockup1.jpg" alt="Mockup 01">-->
+      <div class="img-placeholder mid" style="min-height:420px;">
+        <span class="ph-label">Large Mockup</span>
+        <span class="ph-sub">Primary brand in context</span>
+      </div>
+      <span class="img-caption">Mockup 01 — primary context</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div class="img-block">
+        <!--<img src="images/brand1-mockup2.jpg" alt="Mockup 02">-->
+        <div class="img-placeholder dark" style="min-height:280px;">
+          <span class="ph-label">Mockup 02</span>
+        </div>
+        <span class="img-caption">Mockup 02</span>
+      </div>
+      <div class="img-block">
+        <!--<img src="images/brand1-mockup3.jpg" alt="Mockup 03">-->
+        <div class="img-placeholder light" style="min-height:280px;">
+          <span class="ph-label">Mockup 03</span>
+        </div>
+        <span class="img-caption">Mockup 03</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NEXT PROJECT -->
+  <a href="brand-project-01.html" class="next-project">
+    <div>
+      <span class="np-label">Previous Project</span>
+      <span class="np-title">Project Two Name Here</span>
+    </div>
+    <span class="np-arrow">←</span>
+  </a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-logo">Monologue</span>
+    <span class="footer-copy">© 2026 · All rights reserved</span>
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="https://www.instagram.com/bhumiidesign/">Instagram</a>
+      <a href="https://www.behance.net/bhumichopra">Behance</a>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/main.js"></script>
+</body>
+</html>

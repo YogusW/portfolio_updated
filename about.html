@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Monologue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
+<style>
+
+  /* ── ABOUT PAGE OVERRIDES ─────────────────── */
+
+  /* HERO SPLIT — photo left, big name right */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--ink);
+    min-height: 420px;
+  }
+
+  .about-hero-photo {
+    border-right: 1px solid var(--ink);
+    padding: 32px 28px 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-hero-photo .portrait {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 380px;
+    object-fit: cover;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2a6b3f;
+    border: 0.5px solid #2a6b3f;
+    padding: 5px 12px;
+    width: fit-content;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2a6b3f;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-fact {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--paper-mid);
+    gap: 8px;
+  }
+
+  .hero-fact:last-child { border-bottom: none; }
+
+  .hf-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .hf-value {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* RIGHT — oversized name + bio */
+  .about-hero-text {
+    padding: 32px 0 32px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .about-name-block {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  .about-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .about-role-line {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .about-bio-paras p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 14px;
+    max-width: 560px;
+  }
+
+  .about-bio-paras p:last-child { margin-bottom: 0; }
+
+  /* DISCIPLINES ROW — full width strip */
+  .disciplines-strip {
+    display: flex;
+    border-bottom: 1px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .discipline-cell {
+    flex: 1;
+    padding: 18px 16px;
+    border-right: 0.5px solid var(--ink);
+    text-align: center;
+    transition: background 0.15s;
+    cursor: default;
+  }
+
+  .discipline-cell:last-child { border-right: none; }
+  .discipline-cell:hover { background: var(--ink); }
+  .discipline-cell:hover .disc-name,
+  .discipline-cell:hover .disc-num { color: var(--paper); }
+
+  .disc-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+    transition: color 0.15s;
+  }
+
+  .disc-name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: block;
+    transition: color 0.15s;
+  }
+
+  /* ── EDUCATION — editorial style ───── */
+  .edu-section {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .edu-entry {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0;
+    border-bottom: 0.5px solid var(--paper-mid);
+    transition: background 0.15s;
+  }
+
+  .edu-entry:last-child { border-bottom: none; }
+  .edu-entry:hover { background: var(--paper-dark); }
+
+  .edu-year-col {
+    padding: 28px 24px 28px 0;
+    border-right: 0.5px solid var(--paper-mid);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .edu-big-year {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--paper-mid);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .edu-year-range {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .edu-content-col {
+    padding: 28px 0 28px 28px;
+  }
+
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .edu-inst {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .edu-category {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .edu-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 540px;
+  }
+
+  /* ── AWARDS — magazine-style ──────────────── */
+  .awards-section {
+    padding-bottom: 48px;
+  }
+
+  .award-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: start;
+    gap: 0 24px;
+    padding: 24px 0;
+    border-bottom: 0.5px solid var(--paper-mid);
+    transition: background 0.2s, padding 0.2s, margin 0.2s;
+    cursor: default;
+  }
+
+  .award-row:last-child { border-bottom: none; }
+
+  .award-row:hover {
+    background: var(--ink);
+    margin: 0 -48px;
+    padding: 24px 48px;
+  }
+
+  .award-row:hover .aw-icon,
+  .award-row:hover .aw-title,
+  .award-row:hover .aw-year { color: var(--paper); }
+
+  .award-row:hover .aw-org,
+  .award-row:hover .aw-desc { color: rgba(245,240,232,0.5); }
+
+  .aw-icon {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1;
+    padding-top: 4px;
+    transition: color 0.2s;
+  }
+
+  .award-row.gold .aw-icon { color: #8a6c00; }
+  .award-row.gold:hover .aw-icon { color: #f0c040; }
+
+  .aw-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+  }
+
+  .aw-org {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .aw-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 500px;
+    transition: color 0.2s;
+  }
+
+  .aw-year {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--paper-mid);
+    line-height: 1;
+    white-space: nowrap;
+    transition: color 0.2s;
+    padding-top: 4px;
+  }
+
+  /* Pull quote between sections */
+  .about-pull {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 32px 80px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .about-pull blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(17px, 2.2vw, 26px);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .about-pull cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* Section divider label */
+  .section-divider {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--ink);
+    border-top: 1px solid var(--ink);
+    margin-top: 0;
+  }
+
+  .sd-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 10px 20px 10px 0;
+    border-right: 0.5px solid var(--ink);
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  .sd-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .sd-right {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 20px;
+    border-left: 0.5px solid var(--ink);
+  }
+
+  @media (max-width: 860px) {
+    .about-hero { grid-template-columns: 1fr; }
+    .about-hero-photo { border-right: none; border-bottom: 1px solid var(--ink); padding-right: 0; }
+    .about-hero-text { padding-left: 0; padding-top: 24px; }
+    .disciplines-strip { flex-wrap: wrap; }
+    .discipline-cell { flex: 0 0 33.333%; border-bottom: 0.5px solid var(--ink); }
+    .edu-entry { grid-template-columns: 90px 1fr; }
+    .edu-big-year { font-size: 24px; }
+    .award-row { grid-template-columns: 40px 1fr; }
+    .aw-year { display: none; }
+    .award-row:hover { margin: 0 -20px; padding: 24px 20px; }
+    .about-pull { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span id="today-date"></span>
+    <span>Est. 2024 · New Delhi</span>
+    <span>Design · Film · Branding</span>
+  </div>
+  <div class="masthead-main">
+    <div class="vol-line">Vol. I &nbsp;·&nbsp; No. 1 &nbsp;·&nbsp; The Creative Portfolio</div>
+    <h1 class="logo-title">Monologue</h1>
+    <div class="ornament">✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦</div>
+    <p class="logo-sub">"Where design meets intention, and every page tells a story."</p>
+  </div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="graphic-design.html">Graphic Design</a>
+    <a href="film.html">Short Film</a>
+    <a href="clients.html">Client Work</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- PAGE TITLE -->
+  <div class="page-title-block" style="padding-bottom:20px;">
+    <span class="kicker">Section 01</span>
+    <h2 class="page-headline">About</h2>
+  </div>
+
+  <!-- HERO: PHOTO LEFT · NAME + BIO RIGHT -->
+  <div class="about-hero">
+
+    <div class="about-hero-photo">
+      <div class="portrait">
+        <img src="./assets/images/me.jpg" alt="about_me"
+        style="width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;">
+      </div>
+
+      <div class="status-tag">
+        <span class="status-dot"></span>
+        Available for projects
+      </div>
+
+      <div class="hero-facts">
+        <div class="hero-fact">
+          <span class="hf-label">Based in</span>
+          <span class="hf-value">New Delhi, India</span>
+        </div>
+        <div class="hero-fact">
+          <span class="hf-label">Discipline</span>
+          <span class="hf-value">Design · Film</span>
+        </div>
+        <div class="hero-fact">
+          <span class="hf-label">Since</span>
+          <span class="hf-value">2024</span>
+        </div>
+        <div class="hero-fact">
+          <span class="hf-label">Remote</span>
+          <span class="hf-value">Yes, worldwide</span>
+        </div>
+        <div class="hero-fact">
+          <span class="hf-label">Email</span>
+          <span class="hf-value">bhumichopra225@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-hero-text">
+      <div class="about-name-block">
+        <h2 class="about-name">Bhumi Chopra</h2>
+        <p class="about-role-line">Designer &amp; Filmmaker, New Delhi</p>
+      </div>
+      <div class="about-bio-paras">
+        <p>I am a visual storyteller and designer who expresses emotions through design, animation, and cinematic storytelling. My work blends scriptwriting, branding, and visual communication to create narratives that feel personal, immersive, and emotionally driven.</p>
+        <p>From developing brand identities to creating visual experiences across different mediums, I see design as more than aesthetics — it is the language I use to translate thoughts, silence, and emotions into meaningful narratives. Curiosity, adaptability, and storytelling continue to shape the way I approach every creative project.</p>
+        <p>My approach is rooted in observation, experimentation, and adaptability, which helps me move fluidly between branding, digital design, animation, film, and visual communication. For me, every project is an opportunity to create work that not only looks visually compelling but also leaves behind a feeling, atmosphere, or story that stays with people.</p>
+      </div>
+    </div>
+
+  </div>
+
+<!-- EXPERIENCE -->
+  <div class="section-divider" style="margin-top:0;">
+    <span class="sd-num">§ 01</span>
+    <span class="sd-label">Experience</span>
+    <span class="sd-right">Experience Background</span>
+  </div>
+
+  <div class="edu-section">
+
+    <div class="edu-entry">
+      <div class="edu-year-col">
+        <span class="edu-big-year">2025</span>
+        <span class="edu-year-range">June – October</span>
+      </div>
+      <div class="edu-content-col">
+        <h4 class="edu-degree">The Minimalist</h4>
+        <p class="edu-inst">Internship</p>
+        <b><p class ="edu-category">Graphic Designer</p></b>
+        <p class="edu-desc">Developed visual communication assets and digital design materials in alignment with the brand’s minimal and contemporary design language.</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- EDUCATION -->
+  <div class="section-divider" style="margin-top:0;">
+    <span class="sd-num">§ 02</span>
+    <span class="sd-label">Education</span>
+    <span class="sd-right">Academic Background</span>
+  </div>
+
+  <div class="edu-section">
+
+    <div class="edu-entry">
+      <div class="edu-year-col">
+        <span class="edu-big-year">2024</span>
+        <span class="edu-year-range">2024 – 2027</span>
+      </div>
+      <div class="edu-content-col">
+        <p class="edu-degree">Jagannath Univesity</p>
+        <p class="edu-inst">Delhi NCR</p>
+        <h4 class="edu-category">Bachelors of Vocational Studies in VFX & ANIMATION</h4>
+        <p class="edu-desc">Pursuing studies in visual communication, animation, VFX, 3D design, filmmaking, and creative storytelling with a focus on digital media and contemporary design practices.</p>
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-year-col">
+        <span class="edu-big-year">2024</span>
+        <span class="edu-year-range">2024 – 2027</span>
+      </div>
+      <div class="edu-content-col">
+        <h4 class="edu-degree">Arena Animation</h4>
+        <p class="edu-inst">New Delhi</p>
+        <h4 class="edu-category">Bachelors of Vocational Studies in VFX & ANIMATION</h4>
+        <p class="edu-desc">Receiving industry-focused training in graphic design, 3D animation, VFX, motion graphics, video editing, and advanced creative software workflows.</p>
+      </div>
+    </div>
+
+  </div>
+
+    <!-- PULL QUOTE -->
+  <div class="about-pull">
+    <blockquote>“Stories are not always spoken — sometimes they are designed.”</blockquote>
+    <cite>Turning feelings and fleeting thoughts into visual narratives.</cite>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="section-divider">
+    <span class="sd-num">§ 03</span>
+    <span class="sd-label">Recognition &amp; Awards</span>
+    <span class="sd-right">Honours &amp; Distinctions</span>
+  </div>
+
+  <div class="awards-section">
+
+    <div class="award-row gold">
+      <div class="aw-icon">★</div>
+      <div class="aw-body">
+        <p class="aw-title">WCEL Competition</p>
+        <p class="aw-org">Arena Animation&nbsp;·&nbsp; Animation</p>
+        <p class="aw-desc">Qualified through the Golden Ticket Round and selected as a Finalist at the WCEL Animation Competition 2025 by Arena Animation for excellence in creativity, visual storytelling, and animation design.</p>
+      </div>
+      <div class="aw-year">2025</div>
+    </div>
+
+    <div class="award-row gold">
+      <div class="aw-icon">★</div>
+      <div class="aw-body">
+        <p class="aw-title">Excellence Award</p>
+        <p class="aw-org">Arena Animation &nbsp;·&nbsp; Student Exhibition</p>
+        <p class="aw-desc">Received the Excellence Award at the Arena Animation Student Exhibition 2025 for presenting a short film that explored cinematic storytelling, emotional narrative, and symbolic visual direction.</p>
+      </div>
+      <div class="aw-year">2025</div>
+    </div>
+
+    <div class="award-row">
+      <div class="aw-icon">◆</div>
+      <div class="aw-body">
+        <p class="aw-title">Student Of The Month</p>
+        <p class="aw-org">Arena Animation &nbsp;·&nbsp; May</p>
+        <p class="aw-desc">Awarded Student of the Month in May 2025 for presenting a comic design project that showcased creative storytelling, character expression, and strong visual narrative development.</p>
+      </div>
+      <div class="aw-year">2025</div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-logo">Monologue</span>
+    <span class="footer-copy">© 2026 · All rights reserved</span>
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="https://www.instagram.com/bhumiidesign/">Instagram</a>
+      <a href="https://www.behance.net/bhumichopra">Behance</a>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short Film — Monologue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
+<style>
+
+  /* ── FILM POSTER + STORY ───────────────────── */
+  .film-opening {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0 var(--col-gap);
+    padding: 36px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .film-poster-img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .film-poster-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .poster-caption {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .film-story-col {
+    padding-left: var(--col-gap);
+    border-left: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .film-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .film-tagline {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--muted);
+    border-left: 2px solid var(--ink);
+    padding-left: 14px;
+    margin-bottom: 20px;
+  }
+
+  .film-story-body {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 14px;
+    max-width: 560px;
+  }
+
+  .film-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 0.5px solid var(--ink);
+    margin-top: 24px;
+  }
+
+  .spec-item {
+    padding: 12px 16px;
+    border-right: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .spec-item:nth-child(even) { border-right: none; }
+  .spec-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .spec-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .spec-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ── CHARACTER SKETCHES ────────────────────── */
+  .film-characters {
+    padding: 28px 0 32px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .film-char-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--col-gap);
+    margin-top: 20px;
+  }
+
+  .char-sketch-pair {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .char-img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .char-arrow {
+    font-size: 16px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .char-sketch-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .char-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .char-desc {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── STORYBOARD ────────────────────────────── */
+  .storyboard-section {
+    padding: 28px 0 32px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .storyboard-intro {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.65;
+    margin: 12px 0 24px;
+  }
+
+  .storyboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .storyboard-row-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .storyboard-frame {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sb-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--paper-mid);
+    border: 0.5px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .sb-num {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .sb-caption {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FILM EMBED ────────────────────────────── */
+  .film-embed-section {
+    padding: 28px 0 32px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .film-embed-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #0d0d0d;
+    border: 1px solid var(--ink);
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .film-poster-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .film-poster-screen:hover { background: #1a1a1a; }
+
+  .play-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(245,240,232,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .film-poster-screen:hover .play-circle {
+    border-color: rgba(245,240,232,0.85);
+    background: rgba(245,240,232,0.08);
+  }
+  .play-circle svg { fill: rgba(245,240,232,0.8); margin-left: 5px; }
+
+  .embed-film-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245,240,232,0.55);
+    letter-spacing: 0.04em;
+  }
+
+  .embed-film-sub {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.28);
+  }
+
+  /* ── AWARD ─────────────────────────────────── */
+  .award-section {
+    padding: 28px 0 32px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .film-award-block {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 40px;
+    align-items: center;
+    border: 0.5px solid var(--ink);
+    margin-top: 20px;
+    transition: background 0.2s;
+  }
+  .film-award-block:hover { background: var(--paper-dark); }
+
+  .award-icon-col {
+    padding: 40px;
+    border-right: 0.5px solid var(--ink);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .award-star-big {
+    font-size: 64px;
+    line-height: 1;
+    color: #8a6c00;
+    display: block;
+  }
+
+  .award-icon-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .award-text-col { padding: 36px 40px; }
+
+  .award-film-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 42px);
+    font-weight: 900;
+    line-height: 1.0;
+    margin-bottom: 8px;
+  }
+
+  .award-org-line {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .award-desc-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 540px;
+    margin-bottom: 20px;
+  }
+
+  .award-meta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .award-tag {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 0.5px solid var(--ink);
+    padding: 5px 14px;
+    color: var(--muted);
+  }
+
+  /* ── REVIEWS ───────────────────────────────── */
+  .reviews-section {
+    padding: 28px 0 48px;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 20px;
+    border: 0.5px solid var(--ink);
+  }
+
+  .review-card {
+    padding: 28px 28px 24px;
+    border-right: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+    transition: background 0.15s;
+  }
+  .review-card:nth-child(even) { border-right: none; }
+  .review-card:nth-last-child(-n+2) { border-bottom: none; }
+  .review-card:hover { background: var(--paper-dark); }
+
+  .review-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    line-height: 0.6;
+    color: var(--paper-mid);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .review-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 0.5px solid var(--paper-mid);
+    padding-top: 14px;
+  }
+
+  .review-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .review-avatar span {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--paper);
+    font-style: italic;
+  }
+
+  .review-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+  }
+
+  .review-role {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 960px) {
+    .film-opening { grid-template-columns: 1fr; }
+    .film-story-col { border-left: none; border-top: 1px solid var(--ink); padding-left: 0; padding-top: 24px; margin-top: 24px; }
+    .film-char-grid { grid-template-columns: 1fr; }
+    .storyboard-grid, .storyboard-row-2 { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .review-card { border-right: none; }
+    .review-card:nth-last-child(-n+2) { border-bottom: 0.5px solid var(--ink); }
+    .review-card:last-child { border-bottom: none; }
+    .film-award-block { grid-template-columns: 1fr; }
+    .award-icon-col { border-right: none; border-bottom: 0.5px solid var(--ink); padding: 28px; }
+    .award-text-col { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span id="today-date"></span>
+    <span>Est. 2024 · New Delhi</span>
+    <span>Design · Film · Branding</span>
+  </div>
+  <div class="masthead-main">
+    <div class="vol-line">Vol. I &nbsp;·&nbsp; No. 1 &nbsp;·&nbsp; The Creative Portfolio</div>
+    <h1 class="logo-title">Monologue</h1>
+    <div class="ornament">✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦</div>
+    <p class="logo-sub">"Where design meets intention, and every page tells a story."</p>
+  </div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="graphic-design.html">Graphic Design</a>
+    <a href="film.html" class="active">Short Film</a>
+    <a href="clients.html">Client Work</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="page-title-block">
+    <span class="kicker">Section 03</span>
+    <h2 class="page-headline">Short Film</h2>
+    <p class="page-deck">One animated short — a work that blurs the line between graphic design and moving image. Every frame considered, every transition earned.</p>
+  </div>
+
+  <!-- 01 — POSTER + STORY -->
+  <div class="film-opening">
+    <div class="film-poster-col">
+      <div class="film-poster-img">
+        <span class="ph-label">Movie Poster</span>
+        <span class="ph-sub">Replace with your poster</span>
+      </div>
+      <p class="poster-caption">Official Poster · 2024</p>
+    </div>
+
+    <div class="film-story-col">
+      <div>
+        <span class="kicker">Animated Short Film</span>
+        <h2 class="film-main-title">Your Film<br>Title Here</h2>
+        <p class="film-tagline">"A one-line tagline that captures the spirit of your film."</p>
+        <p class="film-story-body">Write your synopsis here — the world it's set in, the central character, and what they want or fear. Keep it evocative, not mechanical. Let the reader feel the film before they see it.</p>
+        <p class="film-story-body">A second paragraph about the concept — what idea or emotion drove you to make it, and what you wanted audiences to take away.</p>
+      </div>
+
+      <div class="film-specs">
+        <div class="spec-item">
+          <span class="spec-label">Duration</span>
+          <span class="spec-value">X Minutes</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Year</span>
+          <span class="spec-value">2024</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Format</span>
+          <span class="spec-value">2D Animation</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Language</span>
+          <span class="spec-value">Hindi / English</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Direction</span>
+          <span class="spec-value">Your Name</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Sound</span>
+          <span class="spec-value">Collaborator</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 — CHARACTER SKETCHES -->
+  <div class="film-characters">
+    <div class="section-header">
+      <span class="section-label">Characters</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Rough & Final Sketches</span>
+    </div>
+
+    <div class="film-char-grid">
+
+      <div class="film-char-card">
+        <div class="char-sketch-pair">
+          <div>
+            <span class="char-sketch-label">Rough</span>
+            <div class="char-img img-placeholder light"><span class="ph-label">Rough</span></div>
+          </div>
+          <div class="char-arrow">→</div>
+          <div>
+            <span class="char-sketch-label">Final</span>
+            <div class="char-img img-placeholder dark"><span class="ph-label">Final</span></div>
+          </div>
+        </div>
+        <h4 class="char-name">Character One</h4>
+        <p class="char-desc">Role in the story, personality, and what visual choices define this character.</p>
+      </div>
+
+      <div class="film-char-card">
+        <div class="char-sketch-pair">
+          <div>
+            <span class="char-sketch-label">Rough</span>
+            <div class="char-img img-placeholder light"><span class="ph-label">Rough</span></div>
+          </div>
+          <div class="char-arrow">→</div>
+          <div>
+            <span class="char-sketch-label">Final</span>
+            <div class="char-img img-placeholder dark"><span class="ph-label">Final</span></div>
+          </div>
+        </div>
+        <h4 class="char-name">Character Two</h4>
+        <p class="char-desc">Role in the story, personality, and what visual choices define this character.</p>
+      </div>
+
+      <div class="film-char-card">
+        <div class="char-sketch-pair">
+          <div>
+            <span class="char-sketch-label">Rough</span>
+            <div class="char-img img-placeholder light"><span class="ph-label">Rough</span></div>
+          </div>
+          <div class="char-arrow">→</div>
+          <div>
+            <span class="char-sketch-label">Final</span>
+            <div class="char-img img-placeholder dark"><span class="ph-label">Final</span></div>
+          </div>
+        </div>
+        <h4 class="char-name">Character Three</h4>
+        <p class="char-desc">Role in the story, personality, and what visual choices define this character.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 — STORYBOARD -->
+  <div class="storyboard-section">
+    <div class="section-header">
+      <span class="section-label">Storyboard</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Selected Frames</span>
+    </div>
+
+    <p class="storyboard-intro">Selected storyboard panels showing the visual language, composition, and narrative flow developed during pre-production.</p>
+
+    <div class="storyboard-grid">
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">01</span><span class="ph-label">Panel 01</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">02</span><span class="ph-label">Panel 02</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">03</span><span class="ph-label">Panel 03</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">04</span><span class="ph-label">Panel 04</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+    </div>
+
+    <div class="storyboard-row-2">
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">05</span><span class="ph-label">Panel 05</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">06</span><span class="ph-label">Panel 06</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">07</span><span class="ph-label">Panel 07</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+      <div class="storyboard-frame">
+        <div class="sb-img"><span class="sb-num">08</span><span class="ph-label">Panel 08</span></div>
+        <span class="sb-caption">Scene or action note</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 — WATCH THE FILM -->
+  <div class="film-embed-section">
+    <div class="section-header">
+      <span class="section-label">Watch the Film</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Full Cut</span>
+    </div>
+
+    <div class="film-embed-wrap" id="film-box">
+      <div class="film-poster-screen" onclick="loadFilm()">
+        <div class="play-circle">
+          <svg width="22" height="22" viewBox="0 0 22 22">
+            <polygon points="6,3 19,11 6,19"/>
+          </svg>
+        </div>
+        <span class="embed-film-title">Your Film Title Here</span>
+        <span class="embed-film-sub">Click to Watch · Year · Duration</span>
+      </div>
+    </div>
+    <p class="caption" style="margin-top:10px;text-align:center;">Replace the embed URL in the script at the bottom of this file with your YouTube or Vimeo link.</p>
+  </div>
+
+  <!-- 05 — RECOGNITION (moved above reviews) -->
+  <div class="award-section">
+    <div class="section-header">
+      <span class="section-label">Recognition</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Award</span>
+    </div>
+
+    <div class="film-award-block">
+      <div class="award-icon-col">
+        <span class="award-star-big">★</span>
+        <span class="award-icon-label">Award</span>
+      </div>
+      <div class="award-text-col">
+        <span class="kicker">Honours & Distinctions</span>
+        <h3 class="award-film-title">Award Name Here</h3>
+        <span class="award-org-line">Awarding Organisation &nbsp;·&nbsp; Category &nbsp;·&nbsp; Year</span>
+        <p class="award-desc-text">Describe the award — the competition, the jury, what you were up against, what it meant to receive it. Give it its full weight. One strong paragraph is enough.</p>
+        <div class="award-meta-row">
+          <span class="award-tag">2024</span>
+          <span class="award-tag">Animated Short</span>
+          <span class="award-tag">Category Name</span>
+          <span class="award-tag">Organisation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 — REVIEWS (moved below recognition) -->
+  <div class="reviews-section">
+    <div class="section-header">
+      <span class="section-label">Reviews</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Faculty & Peers</span>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <span class="review-quote-mark">"</span>
+        <p class="review-text">Write the exact feedback or review here. A strong, specific compliment is more compelling than a general one — paste it word for word if you have it.</p>
+        <div class="review-author">
+          <div class="review-avatar"><span>A</span></div>
+          <div>
+            <span class="review-name">Teacher Name</span>
+            <span class="review-role">Subject · Institution</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-quote-mark">"</span>
+        <p class="review-text">A second review from another faculty member. Let each review speak to a different aspect — story, animation quality, concept, sound design.</p>
+        <div class="review-author">
+          <div class="review-avatar"><span>B</span></div>
+          <div>
+            <span class="review-name">Teacher Name</span>
+            <span class="review-role">Subject · Institution</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-quote-mark">"</span>
+        <p class="review-text">A third review — from a visiting critic, external examiner, or senior peer whose feedback carries weight in your context.</p>
+        <div class="review-author">
+          <div class="review-avatar"><span>C</span></div>
+          <div>
+            <span class="review-name">Teacher Name</span>
+            <span class="review-role">Subject · Institution</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-quote-mark">"</span>
+        <p class="review-text">A fourth review or screening note. Even a brief, well-placed comment is powerful if it's precise and genuine.</p>
+        <div class="review-author">
+          <div class="review-avatar"><span>D</span></div>
+          <div>
+            <span class="review-name">Teacher Name</span>
+            <span class="review-role">Subject · Institution</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-logo">Monologue</span>
+    <span class="footer-copy">© 2026 · All rights reserved</span>
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="https://www.instagram.com/bhumiidesign/">Instagram</a>
+      <a href="https://www.behance.net/bhumichopra">Behance</a>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/main.js"></script>
+<script>
+  function loadFilm() {
+    // YouTube:  https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1
+    // Vimeo:    https://player.vimeo.com/video/YOUR_VIDEO_ID?autoplay=1
+    const url = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+    document.getElementById('film-box').innerHTML =
+      '<iframe src="' + url + '" allowfullscreen allow="autoplay" style="width:100%;height:100%;border:none;display:block;"></iframe>';
+  }
+</script>
+
+</body>
+</html>
