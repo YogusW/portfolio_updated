@@ -765,3 +765,51 @@ function initBookImageReveal() {
 }
 
 initBookImageReveal();
+
+/* ═══════════════════════════════════════════════
+   14. HOME PAGE — HERO INTRO ANIMATION
+═══════════════════════════════════════════════ */
+function initHomeHero() {
+  const introLeft = document.querySelector('.intro-left');
+  const introRight = document.querySelector('.intro-right');
+  if (!introLeft && !introRight) return;
+
+  // Set initial states
+  if (introLeft) {
+    introLeft.style.opacity = '0';
+    introLeft.style.transform = 'translateY(40px)';
+    introLeft.style.transition = 'opacity 0.8s ease 0.3s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s';
+  }
+
+  if (introRight) {
+    introRight.style.opacity = '0';
+    introRight.style.transform = 'translateX(40px)';
+    introRight.style.transition = 'opacity 0.8s ease 0.5s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s';
+  }
+
+  // Stagger nav cards
+  const navCards = document.querySelectorAll('.nav-card');
+  navCards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateX(20px)';
+    card.style.transition = `opacity 0.5s ease ${0.7 + i * 0.08}s, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${0.7 + i * 0.08}s`;
+  });
+
+  // Fire after masthead animation completes
+  setTimeout(() => {
+    if (introLeft) {
+      introLeft.style.opacity = '1';
+      introLeft.style.transform = 'translateY(0)';
+    }
+    if (introRight) {
+      introRight.style.opacity = '1';
+      introRight.style.transform = 'translateX(0)';
+    }
+    navCards.forEach(card => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateX(0)';
+    });
+  }, 600);
+}
+
+initHomeHero();
