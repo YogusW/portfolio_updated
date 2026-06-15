@@ -735,3 +735,33 @@ function initFooter() {
 }
 
 initFooter();
+
+/* ═══════════════════════════════════════════════
+   13. BOOK DESIGN — LAYOUT + MOCKUP REVEAL
+═══════════════════════════════════════════════ */
+function initBookImageReveal() {
+  const targets = document.querySelectorAll(
+    '.layout-spread img, [data-section="books"] img[src*="mockup"]'
+  );
+
+  targets.forEach(img => {
+    img.style.opacity = '0';
+    img.style.transform = 'scale(0.95) translateY(30px)';
+    img.style.transition = 'opacity 0.8s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1)';
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (!entry.isIntersecting) return;
+      setTimeout(() => {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'scale(1) translateY(0)';
+      }, i * 150);
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.1 });
+
+  targets.forEach(el => obs.observe(el));
+}
+
+initBookImageReveal();
