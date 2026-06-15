@@ -813,3 +813,47 @@ function initHomeHero() {
 }
 
 initHomeHero();
+
+/* ═══════════════════════════════════════════════
+   15. BOOK DESIGN — CHARACTER SKETCHES REVEAL
+═══════════════════════════════════════════════ */
+function initCharacterReveal() {
+  const chars = document.querySelectorAll('.character-col');
+  if (!chars.length) return;
+
+  chars.forEach((col, i) => {
+    col.style.opacity = '0';
+    col.style.transform = 'translateY(30px)';
+    col.style.transition = `opacity 0.7s ease ${i * 0.2}s, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 0.2}s`;
+  });
+
+  // Animate sketch images left to right within each col
+  document.querySelectorAll('.character-sketch-wrap img').forEach((img, i) => {
+    img.style.opacity = '0';
+    img.style.transform = 'scale(0.92)';
+    img.style.transition = `opacity 0.6s ease ${0.3 + i * 0.15}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${0.3 + i * 0.15}s`;
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      chars.forEach(col => {
+        col.style.opacity = '1';
+        col.style.transform = 'translateY(0)';
+      });
+
+      document.querySelectorAll('.character-sketch-wrap img').forEach(img => {
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      });
+
+      obs.disconnect();
+    });
+  }, { threshold: 0.1 });
+
+  const grid = document.querySelector('.characters-grid');
+  if (grid) obs.observe(grid);
+}
+
+initCharacterReveal();
