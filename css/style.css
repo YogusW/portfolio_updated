@@ -209,7 +209,6 @@ main {
   border-bottom: 1px solid var(--ink);
 }
 
-.intro-left {}
 .intro-right { padding-left: var(--col-gap); }
 
 .intro-headline {
@@ -479,8 +478,6 @@ main {
   gap: var(--col-gap);
   padding: 28px 0 32px;
 }
-
-.grid-card {}
 
 .grid-title {
   font-family: 'Playfair Display', serif;
@@ -1093,8 +1090,11 @@ main {
 
 @font-face {
   font-family: 'Energy Station';
-  src: url('energystation.woff2') format('woff2'),
-       url('energystation.ttf') format('truetype');
+  src: url('../assets/EnergyStation.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'WonderCity';
+  src: url('../assets/Wondercity.otf') format('opentype');
 }
 .swatch {
   height: 48px;
@@ -1251,7 +1251,12 @@ main {
   .brand-logos-strip { grid-template-columns: repeat(3, 1fr); }
   .about-top { grid-template-columns: 1fr; }
   .characters-grid { grid-template-columns: 1fr; }
-  .palette-type-grid { grid-template-columns: 1fr; }
+  .palette-type-grid { grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important; }
+  .palette-type-grid .col-rule{
+    display: none !important;
+  }
   .layout-spread-2 { grid-template-columns: 1fr; }
   .mockups-grid { grid-template-columns: 1fr; }
   .mockup-item.large { grid-column: span 1; }
