@@ -1347,3 +1347,17 @@ main {
 
 .sub-btn:hover::after { width: 100%; }
 .sub-btn.active::after { width: 100%; }
+
+/* ── BOOK DESIGN IMAGE HOVER ZOOM ───────────── */
+.character-sketch-wrap img,
+.layout-spread img,
+[data-section="books"] img[src*="mockup"] {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  cursor: zoom-in;
+}
+
+.character-sketch-wrap img:hover,
+.layout-spread img:hover,
+[data-section="books"] img[src*="mockup"]:hover {
+  transform: scale(1.04);
+}
