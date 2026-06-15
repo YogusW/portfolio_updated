@@ -1326,3 +1326,24 @@ main {
     letter-spacing: -0.03em;
   }
 }
+
+/* ── SUB-NAV BUTTON ANIMATIONS ─────────────── */
+.sub-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.sub-btn::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--paper);
+  width: 0;
+  transition: width 0.25s cubic-bezier(0.16,1,0.3,1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.sub-btn:hover::after { width: 100%; }
+.sub-btn.active::after { width: 100%; }

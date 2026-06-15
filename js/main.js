@@ -460,7 +460,7 @@ if (document.readyState === 'loading') {
    Adds a subtle magnetic pull to nav items
 ═══════════════════════════════════════════════ */
 function initMagneticNav() {
-  document.querySelectorAll('.main-nav a').forEach(link => {
+  document.querySelectorAll('.main-nav a, .sub-btn').forEach(link => {
     link.addEventListener('mousemove', (e) => {
       const rect = link.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
