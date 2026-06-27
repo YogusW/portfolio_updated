@@ -178,7 +178,93 @@
     color: var(--muted);
     line-height: 1.65;
   }
+  /* ── SINGLE CHARACTER LAYOUT ───────────────── */
+.film-char-single {
+  margin-top: 24px;
+}
 
+.char-sketches-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--col-gap);
+  margin-bottom: 28px;
+}
+
+.char-single-header {
+  border-top: 1px solid var(--ink);
+  border-bottom: 0.5px solid var(--paper-mid);
+  padding: 18px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+}
+
+.char-single-header .char-name {
+  font-size: 28px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.char-single-header .char-desc {
+  font-size: 15px;
+  margin: 0;
+}
+
+.char-single-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 0.5px solid var(--ink);
+  margin-top: 0;
+}
+
+.char-body-col {
+  padding: 24px 24px 28px;
+  border-right: 0.5px solid var(--ink);
+}
+.char-body-col:last-child {
+  border-right: none;
+}
+
+.char-body-label {
+  font-family: 'Source Serif 4', serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.char-body-text {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVE ────────────────────────────── */
+@media (max-width: 960px) {
+  .char-sketches-row {
+    grid-template-columns: 1fr;
+  }
+  .char-single-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .char-single-body {
+    grid-template-columns: 1fr;
+  }
+  .char-body-col {
+    border-right: none;
+    border-bottom: 0.5px solid var(--paper-mid);
+  }
+  .char-body-col:last-child {
+    border-bottom: none;
+  }
+}
+
+  .expression-img { aspect-ratio: 1/1 !important; }
   /* ── STORYBOARD ────────────────────────────── */
   .storyboard-section {
     padding: 28px 0 32px;
@@ -569,66 +655,175 @@
   </div>
 
   <!-- 02 — CHARACTER SKETCHES -->
-  <div class="film-characters">
-    <div class="section-header">
-      <span class="section-label">Characters</span>
-      <hr class="section-rule-line">
-      <span class="section-label">Rough & Final Sketches</span>
+   <!-- CHARACTER DESCRIPTION -->
+<div class="section-header" style="margin-top: 36px;">
+  <span class="section-label">Character</span>
+  <hr class="section-rule-line">
+  <span class="section-label">Colour Palette & Personality</span>
+</div>
+
+<div class="film-char-single">
+
+  <div class="palette-type-grid">
+
+    <!-- COLOUR PALETTE -->
+    <div class="palette-col">
+      <span class="kicker" style="margin-bottom:14px;display:block;">Colour Palette</span>
+      <div class="swatches">
+        <div class="swatch-item">
+          <div class="swatch" style="background:#fed8d5;"></div>
+          <span class="swatch-name">Blush Pink</span>
+          <span class="swatch-hex">#FED8D5</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch" style="background:#fc5851;"></div>
+          <span class="swatch-name">Coral Red - </span>
+          <span class="swatch-hex">#FC5851</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch" style="background:#FEDFCA;"></div>
+          <span class="swatch-name">Peach Cream</span>
+          <span class="swatch-hex">#FEDFCA</span>
+        </div>
+        <div class="swatch-item">
+          <div class="swatch" style="background:#3d3c42;"></div>
+          <span class="swatch-name">Charcoal black</span>
+          <span class="swatch-hex">#3D3C42</span>
+        </div>
+      </div>
     </div>
 
-    <div class="film-char-grid">
+    <div class="col-rule" style="align-self:stretch;"></div>
 
-      <div class="film-char-card">
-        <div class="char-sketch-pair">
-          <div>
-            <span class="char-sketch-label">Rough</span>
-            <div class="char-img img-placeholder light"><span class="ph-label">Rough</span></div>
-          </div>
-          <div class="char-arrow">→</div>
-          <div>
-            <span class="char-sketch-label">Final</span>
-            <div class="char-img img-placeholder dark"><span class="ph-label">Final</span></div>
-          </div>
-        </div>
-        <h4 class="char-name">Character One</h4>
-        <p class="char-desc">Role in the story, personality, and what visual choices define this character.</p>
+    <!-- PERSONALITY -->
+    <div class="type-col">
+      <span class="kicker" style="margin-bottom:14px;display:block;">Personality</span>
+
+      <div class="type-entry">
+        <span class="type-role">Character Name</span>
+        <p class="type-specimen" style="font-family:'Playfair Display',serif; font-size:26px; font-weight:700; line-height:1.1;">Character Name</p>
+        <span class="type-detail" style="display:block; margin-top:6px;">Role · Film Title · Year</span>
       </div>
 
-      <div class="film-char-card">
-        <div class="char-sketch-pair">
-          <div>
-            <span class="char-sketch-label">Rough</span>
-            <div class="char-img img-placeholder light"><span class="ph-label">Rough</span></div>
-          </div>
-          <div class="char-arrow">→</div>
-          <div>
-            <span class="char-sketch-label">Final</span>
-            <div class="char-img img-placeholder dark"><span class="ph-label">Final</span></div>
-          </div>
-        </div>
-        <h4 class="char-name">Character Two</h4>
-        <p class="char-desc">Role in the story, personality, and what visual choices define this character.</p>
+      <div class="type-entry">
+        <span class="type-role">Personality</span>
+        <p style="font-family:'Libre Baskerville',serif; font-size:13px; line-height:1.8; color:var(--muted);">Describe the character's inner world — their temperament, fears, contradictions, and what drives them through the story.</p>
       </div>
 
-      <div class="film-char-card">
-        <div class="char-sketch-pair">
-          <div>
-            <span class="char-sketch-label">Rough</span>
-            <div class="char-img img-placeholder light"><span class="ph-label">Rough</span></div>
-          </div>
-          <div class="char-arrow">→</div>
-          <div>
-            <span class="char-sketch-label">Final</span>
-            <div class="char-img img-placeholder dark"><span class="ph-label">Final</span></div>
-          </div>
+      <div class="type-entry">
+        <span class="type-role">Arc</span>
+        <p style="font-family:'Libre Baskerville',serif; font-size:13px; line-height:1.8; color:var(--muted);">Where does this character begin, and where do they end? Describe the transformation the film puts them through.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<div class="film-characters">
+
+  <!-- POSES -->
+  <div class="section-header">
+    <span class="section-label">Poses</span>
+    <hr class="section-rule-line">
+    <span class="section-label">Rough & Final Sketches</span>
+  </div>
+
+  <div class="film-char-single">
+    <div class="char-sketches-row">
+
+      <div class="char-sketch-pair">
+        <div>
+          <span class="char-sketch-label">Rough 01</span>
+          <img src="./assets/images/Short_film/front pose rough.png" alt="Pose Rough 01" class="char-img" style="object-fit:cover;">
         </div>
-        <h4 class="char-name">Character Three</h4>
-        <p class="char-desc">Role in the story, personality, and what visual choices define this character.</p>
+        <div class="char-arrow">→</div>
+        <div>
+          <span class="char-sketch-label">Final 01</span>
+          <img src="./assets/images/Short_film/front pose final.png" alt="Pose Final 01" class="char-img" style="object-fit:cover;">
+        </div>
+      </div>
+
+      <div class="char-sketch-pair">
+        <div>
+          <span class="char-sketch-label">Rough 02</span>
+          <img src="./assets/images/Short_film/side pose rough.png" alt="Pose Rough 02" class="char-img" style="object-fit:cover;">
+
+        </div>
+        <div class="char-arrow">→</div>
+        <div>
+          <span class="char-sketch-label">Final 02</span>
+          <img src="./assets/images/Short_film/side pose final.png" alt="Pose Final 02" class="char-img" style="object-fit:cover;">
+
+        </div>
+      </div>
+
+      <div class="char-sketch-pair">
+        <div>
+          <span class="char-sketch-label">Rough 03</span>
+          <img src="./assets/images/Short_film/back pose rough.png" alt="Pose Rough 02" class="char-img" style="object-fit:cover;">
+
+        </div>
+        <div class="char-arrow">→</div>
+        <div>
+          <span class="char-sketch-label">Final 03</span>
+          <img src="./assets/images/Short_film/back pose final.png" alt="Pose Final 03" class="char-img" style="object-fit:cover;">
+        </div>
       </div>
 
     </div>
   </div>
 
+  <!-- EXPRESSIONS -->
+  <div class="section-header" style="margin-top: 36px;">
+    <span class="section-label">Expressions</span>
+    <hr class="section-rule-line">
+    <span class="section-label">Rough & Final Sketches</span>
+  </div>
+
+  <div class="film-char-single expressions-section">
+    <div class="char-sketches-row">
+
+      <div class="char-sketch-pair">
+        <div>
+          <span class="char-sketch-label">Rough 01</span>
+          <div class="char-img img-placeholder light expression-img"><span class="ph-label">Rough</span></div>
+        </div>
+        <div class="char-arrow">→</div>
+        <div>
+          <span class="char-sketch-label">Final 01</span>
+          <div class="char-img img-placeholder dark expression-img"><span class="ph-label">Final</span></div>
+        </div>
+      </div>
+
+      <div class="char-sketch-pair">
+        <div>
+          <span class="char-sketch-label">Rough 02</span>
+          <div class="char-img img-placeholder light expression-img"><span class="ph-label">Rough</span></div>
+        </div>
+        <div class="char-arrow">→</div>
+        <div>
+          <span class="char-sketch-label">Final 02</span>
+          <div class="char-img img-placeholder dark expression-img"><span class="ph-label">Final</span></div>
+        </div>
+      </div>
+
+      <div class="char-sketch-pair">
+        <div>
+          <span class="char-sketch-label">Rough 03</span>
+          <div class="char-img img-placeholder light expression-img"><span class="ph-label">Rough</span></div>
+        </div>
+        <div class="char-arrow">→</div>
+        <div>
+          <span class="char-sketch-label">Final 03</span>
+          <div class="char-img img-placeholder dark expression-img"><span class="ph-label">Final</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
   <!-- 03 — STORYBOARD -->
   <div class="storyboard-section">
     <div class="section-header">
