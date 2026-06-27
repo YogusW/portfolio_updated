@@ -1119,8 +1119,9 @@ main {
 
 .type-entry {
   border-bottom: 0.5px solid var(--paper-mid);
-  padding: 16px 0;
+  padding: 8px 0;
 }
+
 .type-entry:last-child { border-bottom: none; }
 
 .type-role {
