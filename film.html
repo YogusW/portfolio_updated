@@ -20,14 +20,12 @@
   .film-poster-img {
     width: 100%;
     aspect-ratio: 2/3;
-    background: #1a1a1a;
+    background: var(--paper);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid var(--ink);
-    box-shadow: 6px 6px 0 var(--ink);
     margin-bottom: 12px;
     overflow: hidden;
   }
@@ -35,8 +33,7 @@
   .film-poster-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    object-fit: contain;
   }
 
   .poster-caption {
@@ -626,17 +623,16 @@
   <div class="film-opening">
     <div class="film-poster-col">
       <div class="film-poster-img">
-        <span class="ph-label">Movie Poster</span>
-        <span class="ph-sub">Replace with your poster</span>
+        <img src="./assets/images/Short_film/poster.jpeg">
       </div>
-      <p class="poster-caption">Official Poster · 2024</p>
+      <p class="poster-caption">Official Poster · 2025</p>
     </div>
 
     <div class="film-story-col">
       <div>
         <span class="kicker">Animated Short Film</span>
-        <h2 class="film-main-title">Your Film<br>Title Here</h2>
-        <p class="film-tagline">"A one-line tagline that captures the spirit of your film."</p>
+        <h2 class="film-main-title">DEEWAR</h2>
+        <p class="film-tagline">Voh kahani jisne kabhi nahi sone diya</p>
         <p class="film-story-body">Write your synopsis here — the world it's set in, the central character, and what they want or fear. Keep it evocative, not mechanical. Let the reader feel the film before they see it.</p>
         <p class="film-story-body">A second paragraph about the concept — what idea or emotion drove you to make it, and what you wanted audiences to take away.</p>
       </div>
@@ -648,7 +644,7 @@
         </div>
         <div class="spec-item">
           <span class="spec-label">Year</span>
-          <span class="spec-value">2024</span>
+          <span class="spec-value">2025</span>
         </div>
         <div class="spec-item">
           <span class="spec-label">Format</span>
@@ -656,15 +652,15 @@
         </div>
         <div class="spec-item">
           <span class="spec-label">Language</span>
-          <span class="spec-value">Hindi / English</span>
+          <span class="spec-value">Hindi</span>
         </div>
         <div class="spec-item">
           <span class="spec-label">Direction</span>
-          <span class="spec-value">Your Name</span>
+          <span class="spec-value">Bhumi Chopra</span>
         </div>
         <div class="spec-item">
           <span class="spec-label">Sound</span>
-          <span class="spec-value">Collaborator</span>
+          <span class="spec-value"></span>
         </div>
       </div>
     </div>
