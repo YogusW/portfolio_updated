@@ -537,7 +537,7 @@ initHeadlineReveal();
    Subtle paper-to-dark shift as user scrolls into card
 ═══════════════════════════════════════════════ */
 function initParallaxImages() {
-  const imgs = document.querySelectorAll('.work-feature-img img, .film-poster-img img');
+  const imgs = document.querySelectorAll('.work-feature-img img');
 
   if (!imgs.length) return;
 
@@ -857,3 +857,4 @@ function initCharacterReveal() {
 }
 
 initCharacterReveal();
+

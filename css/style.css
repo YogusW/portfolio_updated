@@ -805,6 +805,7 @@ main {
   justify-content: center;
   transition: background 0.15s;
 }
+
 .brand-logo-cell:last-child { border-right: none; }
 .brand-logo-cell:hover { background: var(--paper-dark); }
 
@@ -819,14 +820,20 @@ main {
 }
 
 .brand-logo-cell img {
-  max-width: 110px;
-  max-height: 48px;
+  max-width: 160px;
+  max-height: 80px;
   width: auto;
   height: auto;
   object-fit: contain;
   filter: grayscale(1) contrast(0.7);
   transition: filter 0.2s;
 }
+.brand-logo-cell:nth-child(4) img,
+.brand-logo-cell:nth-child(5) img {
+  max-width: 110px;
+  max-height: 50px;
+}
+
 .brand-logo-cell:hover img { filter: grayscale(0) contrast(1); }
 
 /* ── ABOUT PAGE ────────────────────────────── */
@@ -1345,3 +1352,4 @@ main {
 
 .sub-btn:hover::after { width: 100%; }
 .sub-btn.active::after { width: 100%; }
+

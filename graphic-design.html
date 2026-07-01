@@ -173,6 +173,26 @@
     margin-bottom: 6px;
   }
 
+  /* ── VIEW PROJECT LINK (shared) ────────────── */
+  .view-project-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .view-project-link:hover { opacity: 0.6; }
+
+  /* ── FEATURED TAB — hidden until JS decides ── */
+  .tab-section { display: none; }
+  .tab-section[data-section="branding"] { display: block; }
+
   @media (max-width: 960px) {
     .characters-grid { grid-template-columns: 1fr; }
     .palette-type-grid { grid-template-columns: 1fr; }
@@ -220,10 +240,74 @@
   <!-- SUB-NAV TABS -->
   <div class="sub-nav-wrap">
     <div class="sub-nav">
-      <button class="sub-btn active" data-tab="all">All Work</button>
-      <button class="sub-btn" data-tab="branding" id="branding">Branding</button>
+      <button class="sub-btn active" data-tab="branding" id="branding">Branding</button>
       <button class="sub-btn" data-tab="illustration">Illustration</button>
       <button class="sub-btn" data-tab="books" id="books">Book Design</button>
+      <button class="sub-btn" data-tab="featured">Featured Work</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FEATURED WORK
+  ════════════════════════════════════════════ -->
+  <div class="tab-section" data-section="featured">
+    <div class="section-header">
+      <span class="section-label">Featured Work</span>
+      <hr class="section-rule-line">
+      <span class="section-label">Selected Highlights</span>
+    </div>
+
+    <!-- FEATURED 01 — Branding -->
+    <div class="work-feature">
+      <div class="work-feature-img">
+        <a href="#branding">
+          <div class="img-placeholder dark tall">
+            <span class="ph-label">Branding Project 01</span>
+            <span class="ph-sub">Replace with your image</span>
+          </div>
+        </a>
+      </div>
+      <div class="work-feature-text">
+        <span class="project-number">Project 01</span>
+        <span class="kicker">Brand Identity</span>
+        <h3 class="work-title"><a href="#branding">Project One<br>Name Here</a></h3>
+        <p class="work-body">A one or two line teaser of this branding project — the client, the concept, or the standout idea. Just enough to make someone want the full story.</p>
+        <a href="#branding" class="view-project-link">View Project →</a>
+      </div>
+    </div>
+
+    <!-- FEATURED 02 — Illustration -->
+    <div class="work-feature reverse">
+      <div class="work-feature-img">
+        <a href="#illustration">
+          <div class="img-placeholder light tall">
+            <span class="ph-label" style="color:var(--muted)">Illustration Work</span>
+            <span class="ph-sub" style="color:var(--muted)">Replace with your illustration</span>
+          </div>
+        </a>
+      </div>
+      <div class="work-feature-text">
+        <span class="kicker">Illustration Series</span>
+        <h3 class="work-title"><a href="#illustration">Series or<br>Project Name</a></h3>
+        <p class="work-body">A short teaser describing the style, medium, or theme of this illustration series.</p>
+        <a href="#illustration" class="view-project-link">View Project →</a>
+      </div>
+    </div>
+
+    <!-- FEATURED 03 — Book Design -->
+    <div class="work-feature">
+      <div class="work-feature-img">
+        <a href="#books">
+          <img src="./assets/images/Book_design/book_cover.jpg" alt="What are we?"
+               style="width:100%;height:100%;object-fit:cover;display:block;">
+        </a>
+      </div>
+      <div class="work-feature-text">
+        <span class="kicker">Featured Publication</span>
+        <h3 class="work-title"><a href="#books">What are we?</a></h3>
+        <p class="work-body">A quiet exploration of the space between friendship and love — told through minimal, diary-like layouts and warm, nostalgic colour.</p>
+        <a href="#books" class="view-project-link">View Project →</a>
+      </div>
     </div>
   </div>
 
@@ -258,7 +342,7 @@
       <span class="meta-item"><strong>Year</strong> 2024</span>
       <span class="meta-item"><strong>Scope</strong> Logo, Type, Colour, Collateral</span>
     </div>
-    <a href="brand-project-01.html" style="display:inline-block; margin-top:20px; font-family:'Source Serif 4',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:3px; text-decoration:none;">View Project →</a>
+    <a href="brand-project-01.html" class="view-project-link">View Project →</a>
   </div>
 </div>
 
@@ -283,7 +367,7 @@
       <span class="meta-item"><strong>Year</strong> 2024</span>
       <span class="meta-item"><strong>Scope</strong> Branding, Collateral, Packaging</span>
     </div>
-    <a href="brand-project-02.html" style="display:inline-block; margin-top:20px; font-family:'Source Serif 4',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:3px; text-decoration:none;">View Project →</a>
+    <a href="brand-project-02.html" class="view-project-link">View Project →</a>
   </div>
 </div>
 
@@ -543,7 +627,7 @@
 
   function showSection(tab) {
     sections.forEach(s => {
-      s.style.display = (tab === 'all' || s.dataset.section === tab) ? 'block' : 'none';
+      s.style.display = (s.dataset.section === tab) ? 'block' : 'none';
     });
     subBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   }
@@ -553,8 +637,10 @@
   });
 
   const hash = window.location.hash.replace('#', '');
-  if (['branding', 'illustration', 'books'].includes(hash)) {
+  if (['branding', 'illustration', 'books', 'featured'].includes(hash)) {
     showSection(hash);
+  } else {
+    showSection('branding');
   }
 </script>
 </body>
