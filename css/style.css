@@ -1348,4 +1348,3 @@ main {
 
 .sub-btn:hover::after { width: 100%; }
 .sub-btn.active::after { width: 100%; }
-
