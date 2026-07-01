@@ -1020,7 +1020,6 @@ main {
   border-bottom: 1px solid var(--ink);
 }
 
-.character-col {}
 
 .character-row {
   display: flex;
@@ -1114,8 +1113,6 @@ main {
   letter-spacing: 0.12em;
   color: var(--muted);
 }
-
-.type-col {}
 
 .type-entry {
   border-bottom: 0.5px solid var(--paper-mid);
