@@ -1065,13 +1065,29 @@
 
 <script src="./js/main.js"></script>
 <script>
-  function loadFilm() {
-    // YouTube:  https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1
-    // Vimeo:    https://player.vimeo.com/video/YOUR_VIDEO_ID?autoplay=1
-    const url = '';
+  let filmLoaded = false;
+
+  function loadFilm(autoplay) {
+    if (filmLoaded) return;
+    filmLoaded = true;
+    const url = 'https://www.youtube.com/embed/62bIsvRcPv0?si=nZXVUzU-w1L9woBe'
+      + (autoplay ? '&autoplay=1&mute=1' : '');
     document.getElementById('film-box').innerHTML =
       '<iframe src="' + url + '" allowfullscreen allow="autoplay" style="width:100%;height:100%;border:none;display:block;"></iframe>';
   }
+
+  // Autoplay when scrolled into view
+  const filmBox = document.getElementById('film-box');
+  const filmObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        loadFilm(true);
+        filmObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  filmObserver.observe(filmBox);
 </script>
 
 </body>
