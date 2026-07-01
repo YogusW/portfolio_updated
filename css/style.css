@@ -115,6 +115,7 @@ body {
   text-decoration: none;
   padding: 9px 22px;
   border-right: 0.5px solid var(--ink);
+  border-left: 0.5px solid var(--ink);
   transition: background 0.15s, color 0.15s;
 }
 
@@ -461,14 +462,13 @@ main {
   text-transform: uppercase;
   background: none;
   border: 0.5px solid var(--ink);
-  border-right: none;
   color: var(--muted);
   padding: 8px 20px;
   cursor: pointer;
   transition: all 0.15s;
 }
 .sub-btn:last-child { border-right: 0.5px solid var(--ink); }
-.sub-btn:hover { background: var(--paper-dark); color: var(--ink); }
+.sub-btn:hover { background: var(--ink); color: var(--paper); }
 .sub-btn.active { background: var(--ink); color: var(--paper); }
 
 /* ── GRID 2 ────────────────────────────────── */

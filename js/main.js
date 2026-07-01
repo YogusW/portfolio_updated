@@ -156,24 +156,39 @@ style.textContent = `
      HOVER ENHANCEMENTS
   ══════════════════════════════════════════ */
 
-  /* Nav links — full outline box reveal on hover */
-.main-nav a {
-  position: relative;
-}
-.main-nav a::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border: 1px solid var(--ink);
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1);
-  pointer-events: none;
-}
-.main-nav a:hover::after {
-  opacity: 1;
-  transform: scale(1);
-}
+  /* Nav links — ink underline sweep */
+  
+    content: '';
+    display: block;
+    height: 2px;
+    background: var(--paper);
+    width: 0;
+    transition: width 0.25s cubic-bezier(0.16,1,0.3,1);
+    position: absolute;
+    bot.main-nav a::after {tom: 0; left: 0;
+  }
+  .main-nav a { position: relative; overflow: hidden; }
+  .main-nav a:hover::after { width: 100%; }
+
+  /* Nav cards — bold left border slide */
+  .nav-card {
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--ink);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .nav-card:hover::before { transform: scaleY(1); }
+  .nav-card:hover { transform: translateX(4px); }
+
   /* Teaser cards — lift with shadow */
   .teaser-card {
     transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1) !important;
