@@ -157,16 +157,7 @@ style.textContent = `
   ══════════════════════════════════════════ */
 
   /* Nav links — ink underline sweep */
-  .main-nav a::after {
-    content: '';
-    display: block;
-    height: 2px;
-    background: var(--paper);
-    width: 0;
-    transition: width 0.25s cubic-bezier(0.16,1,0.3,1);
-    position: absolute;
-    bottom: 0; left: 0;
-  }
+  
   .main-nav a { position: relative; overflow: hidden; }
   .main-nav a:hover::after { width: 100%; }
 
