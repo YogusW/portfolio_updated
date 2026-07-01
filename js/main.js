@@ -858,3 +858,40 @@ function initCharacterReveal() {
 
 initCharacterReveal();
 
+
+function initFilmAutoplay() {
+  const box = document.getElementById('film-box');
+  if (!box) return;
+
+  const youtubeId = "62bIsvRcPv0";
+
+  let loaded = false;
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !loaded) {
+        loaded = true;
+        box.innerHTML = `
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&playsinline=1&rel=0"
+            title="Deewar — Short Film"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        `;
+        obs.unobserve(box);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  obs.observe(box);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initFilmAutoplay);
+} else {
+  initFilmAutoplay();
+}
