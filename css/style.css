@@ -803,12 +803,12 @@ main {
 }
 
 .brand-logo-cell {
-  border-right: 0.5px solid var(--ink);
   padding: 32px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.15s;
+  box-shadow: -0.5px 0 0 0 var(--ink), 0 -0.5px 0 0 var(--ink);
 }
 
 .brand-logo-cell:last-child { border-right: none; }
@@ -1753,5 +1753,17 @@ main {
     padding-top: 0 !important;
     transform: none !important;
     flex-shrink: 0 !important;
+  }
+}
+@media (max-width: 960px) {
+  .brand-logos-strip, .brand-logos-strip[style] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-logos-strip, .brand-logos-strip[style] {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
