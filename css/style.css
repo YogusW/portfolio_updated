@@ -82,6 +82,10 @@ body {
   text-transform: uppercase;
 }
 
+.logo-title a {
+  color: inherit;
+  text-decoration: none;
+}
 .ornament {
   font-size: 14px;
   color: var(--muted);

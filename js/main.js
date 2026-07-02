@@ -326,11 +326,12 @@ function runPageEntrance() {
   const masthead = document.querySelector('.masthead');
   if (!masthead) return;
 
-  // Split logo letters
   const logo = masthead.querySelector('.logo-title');
   if (logo) {
-    const text = logo.textContent;
-    logo.innerHTML = text.split('').map(ch =>
+    const logoLink = logo.querySelector('a');
+    const target = logoLink || logo;
+    const text = target.textContent;
+    target.innerHTML = text.split('').map(ch =>
       ch === ' '
         ? ' '
         : `<span class="char">${ch}</span>`
@@ -981,3 +982,4 @@ if (document.readyState === 'loading') {
 } else {
   initStoryboardLightbox();
 }
+
