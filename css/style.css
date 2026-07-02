@@ -1282,7 +1282,6 @@ main {
 
 @media (max-width: 600px) {
   .char-sketch-pair { grid-template-columns: 1fr; gap: 10px; justify-items: center; }
-  .char-sketch-pair .char-arrow { transform: rotate(90deg); }
   .char-img { max-width: 220px; }
 }
 
@@ -1433,9 +1432,9 @@ main {
     flex-wrap: wrap !important;
   }
   .character-sketch-wrap, .character-sketch-wrap[style] {
-    max-width: 42% !important;
-    flex: 1 1 42% !important;
-  }
+  max-width: 42% !important;
+  flex: 1 1 42% !important;
+}
 }
 
 /* ── EXTRA-SMALL SCREENS ────────────────────── */
@@ -1494,12 +1493,12 @@ main {
     max-width: 100% !important;
     flex: 1 1 100% !important;
   }
-  .sketch-arrow { padding-top: 0; transform: rotate(90deg); }
+  .sketch-arrow { padding-top: 0; }
   .character-row, .character-row[style] {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 6px !important;
-  }
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
 
   .char-sketches-row {
     gap: 12px;
@@ -1655,6 +1654,19 @@ main {
 .sb-lightbox-prev { left: -56px; }
 .sb-lightbox-next { right: -56px; }
 
+@media (max-width: 960px) {
+  .sb-lightbox {
+    padding: 16px;
+  }
+  .sb-lightbox-prev { left: 6px; }
+  .sb-lightbox-next { right: 6px; }
+  .sb-lightbox-nav {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+}
+
 .sb-lightbox.active {
   opacity: 1;
   visibility: visible;
@@ -1719,3 +1731,27 @@ main {
 }
 
 .sb-img.gallery-hover { cursor: pointer; }
+
+/* ═══ FORCE CHARACTER ROW SIDE-BY-SIDE ON ALL SCREENS ═══ */
+@media (max-width: 600px) {
+  .character-row,
+  .character-row[style] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+  .character-sketch-wrap,
+  .character-sketch-wrap[style] {
+    max-width: 42% !important;
+    width: 42% !important;
+    flex: 0 1 42% !important;
+  }
+  .sketch-arrow {
+    padding-top: 0 !important;
+    transform: none !important;
+    flex-shrink: 0 !important;
+  }
+}

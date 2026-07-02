@@ -15,7 +15,11 @@
     padding: 24px 0 32px;
     border-bottom: 1px solid var(--ink);
   }
-
+  @media (max-width: 600px) {
+  .mockups-two-col {
+    grid-template-columns: 1fr !important;
+  }
+}
   .character-row {
     display: flex;
     align-items: flex-start;
