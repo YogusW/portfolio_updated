@@ -1610,3 +1610,108 @@ main {
   transform: scale(1.05);
   background: var(--paper);
 }
+
+/* ── STORYBOARD LIGHTBOX ───────────────────── */
+.sb-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(13,13,13,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  padding: 40px;
+}
+.sb-lightbox-nav {
+  position: absolute;
+  top: 45%; 
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,240,232,0.4);
+  background: rgba(13,13,13,0.6);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: 'Playfair Display', serif;
+  transition: background 0.15s, border-color 0.15s;
+  z-index: 10;
+}
+.sb-lightbox-nav:hover {
+  background: rgba(13,13,13,0.9);
+  border-color: rgba(245,240,232,0.8);
+}
+.sb-lightbox-prev { left: -56px; }
+.sb-lightbox-next { right: -56px; }
+
+.sb-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sb-lightbox-inner {
+  position: relative; 
+  max-width: 900px;
+  width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--paper);
+  transform: scale(0.94);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-lightbox.active .sb-lightbox-inner {
+  transform: scale(1);
+}
+
+.sb-lightbox-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #0d0d0d;
+  overflow: hidden;
+}
+.sb-lightbox-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sb-lightbox-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-top: 1px solid var(--ink);
+}
+
+.sb-lightbox-num {
+  font-family: 'Source Serif 4', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sb-lightbox-close {
+  font-family: 'Source Serif 4', serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: none;
+  border: 0.5px solid var(--ink);
+  color: var(--ink);
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.sb-lightbox-close:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.sb-img.gallery-hover { cursor: pointer; }

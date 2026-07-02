@@ -895,3 +895,89 @@ if (document.readyState === 'loading') {
 } else {
   initFilmAutoplay();
 }
+
+/* ═══════════════════════════════════════════════
+   STORYBOARD LIGHTBOX (with next/prev)
+═══════════════════════════════════════════════ */
+function initStoryboardLightbox() {
+  const frames = Array.from(document.querySelectorAll('.sb-img'));
+  if (!frames.length) return;
+
+  let currentIndex = 0;
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'sb-lightbox';
+  lightbox.innerHTML = `
+  <div class="sb-lightbox-inner">
+    <button class="sb-lightbox-nav sb-lightbox-prev" type="button" aria-label="Previous">‹</button>
+    <div class="sb-lightbox-img-wrap">
+      <img src="" alt="">
+    </div>
+    <div class="sb-lightbox-caption">
+      <span class="sb-lightbox-num"></span>
+      <button class="sb-lightbox-close" type="button">Close ✕</button>
+    </div>
+    <button class="sb-lightbox-nav sb-lightbox-next" type="button" aria-label="Next">›</button>
+  </div>
+`;
+  document.body.appendChild(lightbox);
+
+  const lbImg = lightbox.querySelector('img');
+  const lbNum = lightbox.querySelector('.sb-lightbox-num');
+  const closeBtn = lightbox.querySelector('.sb-lightbox-close');
+  const prevBtn = lightbox.querySelector('.sb-lightbox-prev');
+  const nextBtn = lightbox.querySelector('.sb-lightbox-next');
+
+  function showFrame(index) {
+    // wrap around
+    currentIndex = (index + frames.length) % frames.length;
+    const frame = frames[currentIndex];
+    const img = frame.querySelector('img');
+    const num = frame.querySelector('.sb-num');
+    if (!img) return;
+    lbImg.src = img.src;
+    lbImg.alt = img.alt || '';
+    lbNum.textContent = num ? `Panel ${num.textContent}` : '';
+  }
+
+  function openLightbox(index) {
+    showFrame(index);
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  frames.forEach((frame, i) => {
+    frame.addEventListener('click', () => openLightbox(i));
+  });
+
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showFrame(currentIndex - 1);
+  });
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showFrame(currentIndex + 1);
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showFrame(currentIndex + 1);
+    if (e.key === 'ArrowLeft') showFrame(currentIndex - 1);
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initStoryboardLightbox);
+} else {
+  initStoryboardLightbox();
+}
