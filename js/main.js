@@ -95,7 +95,7 @@ style.textContent = `
   .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    transition: opacity 1.2s ease 0.1s, transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.1s;
   }
   .reveal.visible {
     opacity: 1;
@@ -106,7 +106,7 @@ style.textContent = `
   .reveal-left {
     opacity: 0;
     transform: translateX(-60px);
-    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    transition: opacity 1.2s ease 0.1s, transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.1s;
   }
   .reveal-left.visible {
     opacity: 1;
@@ -117,7 +117,7 @@ style.textContent = `
   .reveal-right {
     opacity: 0;
     transform: translateX(60px);
-    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    transition: opacity 1.2s ease 0.1s, transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.1s;
   }
   .reveal-right.visible {
     opacity: 1;
@@ -128,7 +128,7 @@ style.textContent = `
   .reveal-scale {
     opacity: 0;
     transform: scale(0.92);
-    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    transition: opacity 1.2s ease 0.1s, transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.1s;
   }
   .reveal-scale.visible {
     opacity: 1;
@@ -144,13 +144,13 @@ style.textContent = `
     clip-path: inset(0 0% 0 0);
   }
 
-  /* Stagger delay helpers */
-  .delay-1 { transition-delay: 0.1s !important; }
-  .delay-2 { transition-delay: 0.2s !important; }
-  .delay-3 { transition-delay: 0.3s !important; }
-  .delay-4 { transition-delay: 0.4s !important; }
-  .delay-5 { transition-delay: 0.5s !important; }
-  .delay-6 { transition-delay: 0.6s !important; }
+/* Stagger delay helpers */
+  .delay-1 { transition-delay: 0.25s !important; }
+  .delay-2 { transition-delay: 0.5s !important; }
+  .delay-3 { transition-delay: 0.75s !important; }
+  .delay-4 { transition-delay: 1s !important; }
+  .delay-5 { transition-delay: 1.25s !important; }
+  .delay-6 { transition-delay: 1.5s !important; }
 
   /* ══════════════════════════════════════════
      HOVER ENHANCEMENTS
@@ -315,6 +315,67 @@ style.textContent = `
   .brand-logo-cell:hover,
   .logo-cell:hover { transform: scale(1.05); }
 
+  /* ══════════════════════════════════════════
+     BRANDING PROJECT PAGE — hover enhancements
+  ══════════════════════════════════════════ */
+
+  /* Typeface cards — lift + subtle scale on the word */
+  .face-card {
+    transition: background 0.15s ease, transform 0.25s cubic-bezier(0.16,1,0.3,1) !important;
+  }
+  .face-card:hover { transform: translateY(-6px); }
+  .face-card .face-word {
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .face-card:hover .face-word { transform: scale(1.06); }
+
+   /* Moodboard pieces — gentle zoom on hover, brought above neighbours */
+  .piece {
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), filter 0.3s ease !important;
+  }
+  .piece:hover {
+  transform: scale(1.01);
+    z-index: 999 !important;
+  }
+
+  /* Packaging tiles — soft zoom */
+  .packaging-visual .pv-back,
+  .packaging-visual .pv-front {
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1) !important;
+  }
+  .packaging-visual .pv-back:hover { 
+  transform: scale(1.01); 
+  z-index: 999 !important;
+  }
+  .packaging-visual .pv-front:hover { transform: scale(1.03); }
+
+  /* Website stagger tiles — soft zoom */
+  .website-stagger {
+    perspective: 1000px;
+  }
+  .ws-tile {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1) !important;
+  }
+  .ws-tile:hover {
+    transform: translateZ(12px);
+    z-index: 999 !important;
+  }
+  .ws-tile .img-placeholder {
+    transition: transform 0.6s cubic-bezier(0.16,1,0.3,1) !important;
+  }
+  .ws-tile:hover .img-placeholder { transform: scale(1.04); }
+
+  /* Visit-website link — already has letter-spacing hover in CSS; add lift */
+  .website-visit-link {
+    transition: letter-spacing 0.25s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease !important;
+  }
+  .website-visit-link:hover { transform: translateY(-2px); }
+
+  /* Next project link — arrow nudge on hover */
+  .next-project:hover .np-arrow {
+    animation: arrowPulse 0.6s ease infinite alternate;
+  }
+
 `;
 document.head.appendChild(style);
 
@@ -401,6 +462,33 @@ function assignRevealClasses() {
 
     // Project mockups
     '.img-block, .three-col-images .img-block, .two-col-images .img-block': 'reveal-scale',
+
+    // ── Branding project page (project-01 style layout) ──
+    // Hero image banner
+    '.intro-image-full': 'reveal-scale',
+
+    // Brief copy + meta columns either side of the hero
+    '.intro-copy-col': 'reveal-left',
+    '.intro-meta-col': 'reveal-right',
+
+    // Logo mark bar (dark strip)
+    '.logo-bar-mark': 'reveal-left',
+    '.logo-bar-theory': 'reveal-right',
+
+    // Three typeface treatment cards
+    '.face-card': 'reveal',
+
+    // Packaging showcase
+    '.packaging-visual': 'reveal-scale',
+    '.packaging-copy': 'reveal',
+
+    // Website zigzag section
+    '.ws-tile': 'reveal-scale',
+    '.ws-text': 'reveal',
+    '.website-link-wrap': 'reveal',
+
+    // Next project footer link
+    '.next-project': 'reveal',
   };
 
   Object.entries(selectors).forEach(([sel, cls]) => {
@@ -438,8 +526,8 @@ function initScrollObserver() {
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -15% 0px'
   });
 
   const targets = document.querySelectorAll(
@@ -737,6 +825,100 @@ function initFooter() {
 
 initFooter();
 
+
+/* ═══════════════════════════════════════════════
+   12b. MOODBOARD COLLAGE — POP FROM CENTER, THEN SCATTER
+   Pieces converge invisibly at the center of the board,
+   then fly out to their pinned positions when scrolled
+   into view, staggered for a scatter/collage effect.
+═══════════════════════════════════════════════ */
+function initMoodboardPop() {
+  const collage = document.querySelector('.brand-collage');
+  if (!collage) return;
+
+  const pieces = Array.from(collage.querySelectorAll('.piece'));
+  if (!pieces.length) return;
+
+  const isAbsoluteLayout = () => window.innerWidth > 1100;
+
+  function primePieces() {
+    // Origin point: a bit above the center of piece 8 — the large
+    // anchor tile everything seems to emerge from.
+    const originPiece = collage.querySelector('.p8') || pieces[0];
+    const originX = originPiece.offsetLeft + originPiece.offsetWidth / 2;
+    const originY = originPiece.offsetTop + originPiece.offsetHeight * 0.28;
+
+    pieces.forEach((piece, i) => {
+      if (!isAbsoluteLayout()) {
+        piece.style.transform = '';
+        piece.style.opacity = '';
+        piece.style.transition = '';
+        piece.style.zIndex = '';
+        return;
+      }
+
+      const pieceCenterX = piece.offsetLeft + piece.offsetWidth / 2;
+      const pieceCenterY = piece.offsetTop + piece.offsetHeight / 2;
+
+      const dx = originX - pieceCenterX;
+      const dy = originY - pieceCenterY;
+
+      piece.dataset.dx = dx;
+      piece.dataset.dy = dy;
+
+      piece.style.transition = 'none';
+      piece.style.opacity = '0';
+      piece.style.transform = `translate(${dx}px, ${dy}px) scale(0.12)`;
+      piece.style.zIndex = 40 + i;
+    });
+  }
+
+  primePieces();
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const items = Array.from(entry.target.querySelectorAll('.piece'));
+
+      items.forEach((piece, i) => {
+        setTimeout(() => {
+          piece.style.transition =
+            'transform 1.15s cubic-bezier(0.22, 1.15, 0.36, 1), opacity 0.6s ease';
+          piece.style.opacity = '1';
+          piece.style.transform = 'translate(0px, 0px) scale(1)';
+
+          const settle = (e) => {
+            if (e.propertyName !== 'transform') return;
+            piece.style.transition = '';
+            piece.style.transform = '';
+            piece.style.opacity = '';
+            piece.style.zIndex = '';
+            piece.removeEventListener('transitionend', settle);
+          };
+          piece.addEventListener('transitionend', settle);
+        }, i * 110);
+      });
+
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
+
+  obs.observe(collage);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(primePieces, 200);
+  }, { passive: true });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMoodboardPop);
+} else {
+  initMoodboardPop();
+}
+
+
 /* ═══════════════════════════════════════════════
    13. BOOK DESIGN — LAYOUT + MOCKUP REVEAL
 ═══════════════════════════════════════════════ */
@@ -982,4 +1164,3 @@ if (document.readyState === 'loading') {
 } else {
   initStoryboardLightbox();
 }
-
