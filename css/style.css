@@ -2144,7 +2144,6 @@ main {
     justify-content:center;
     align-items:center;
     background:var(--ink);
-    border:1px solid #d8d2ca;
     color:#777;
     font-size:11px;
     letter-spacing:.18em;
