@@ -423,6 +423,16 @@ main {
 .work-feature-img { width: 100%; }
 .work-feature-img .img-placeholder { aspect-ratio: unset; height: 100%; min-height: 320px; }
 
+.work-feature-img { width: 100%; overflow: hidden; }
+.work-feature-img .img-placeholder { aspect-ratio: unset; height: 100%; min-height: 320px; }
+
+.work-feature-img img {
+  display: block;
+  height: 112%;
+  margin-top: -6%;
+  object-fit: cover;
+}
+
 .work-feature-text { padding: 8px 0; }
 
 .work-title {
@@ -2007,7 +2017,7 @@ main {
   }
 
   .face-card {
-    padding: 48px 32px;
+    padding: 10px 20px;
     border-right: 0.5px solid var(--ink);
     display: flex;
     flex-direction: column;
@@ -2078,6 +2088,11 @@ main {
     display: block;
     margin-bottom: 6px;
   }
+  .work-feature-img a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
   .np-title {
     font-family: 'Playfair Display', serif;
