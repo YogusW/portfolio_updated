@@ -8,395 +8,6 @@
 <link rel="stylesheet" href="./css/style.css">
 <style>
 
-  /* ── BACK LINK ─────────────────────────────── */
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Source Serif 4', serif;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 0.5px solid var(--paper-mid);
-    padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
-    margin-bottom: 32px;
-    display: inline-flex;
-  }
-  .back-link:hover { color: var(--ink); border-color: var(--ink); }
-
-  /* ── PROJECT HERO ──────────────────────────── */
-  .project-hero {
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 0;
-    border-bottom: 1px solid var(--ink);
-    min-height: 480px;
-  }
-
-  .project-hero-image {
-    border-right: 1px solid var(--ink);
-  }
-
-  .project-hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .project-hero-image .img-placeholder {
-    width: 100%;
-    height: 100%;
-    min-height: 480px;
-  }
-
-  .project-hero-meta {
-    padding: 40px 0 40px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .project-hero-meta .project-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 4vw, 56px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin-bottom: 10px;
-  }
-
-  .project-hero-meta .project-tagline {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: var(--muted);
-    margin-bottom: 32px;
-  }
-
-  .project-details-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-top: 0.5px solid var(--paper-mid);
-  }
-
-  .pd-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 10px 0;
-    border-bottom: 0.5px solid var(--paper-mid);
-    gap: 12px;
-  }
-
-  .pd-label {
-    font-family: 'Source Serif 4', serif;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    flex-shrink: 0;
-  }
-
-  .pd-value {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 12px;
-    color: var(--ink);
-    text-align: right;
-  }
-
-  /* ── SECTION DIVIDER (reuse from about) ─────── */
-  .section-divider {
-    display: flex;
-    align-items: stretch;
-    border-bottom: 1px solid var(--ink);
-    border-top: 1px solid var(--ink);
-    margin-top: 0;
-  }
-
-  .sd-num {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 11px;
-    color: var(--muted);
-    padding: 10px 20px 10px 0;
-    border-right: 0.5px solid var(--ink);
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-  }
-
-  .sd-label {
-    font-family: 'Source Serif 4', serif;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-
-  .sd-right {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    padding: 10px 0 10px 20px;
-    border-left: 0.5px solid var(--ink);
-  }
-
-  /* ── OVERVIEW ──────────────────────────────── */
-  .project-overview {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap, 48px);
-    padding: 40px 0;
-    border-bottom: 1px solid var(--ink);
-  }
-
-  .overview-col p {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 13.5px;
-    line-height: 1.85;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
-
-  .overview-col p:last-child { margin-bottom: 0; }
-
-  /* ── COLOUR PALETTE ────────────────────────── */
-  .swatches {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 0.5px solid var(--ink);
-  }
-
-  .swatch-item {
-    display: grid;
-    grid-template-columns: 48px 1fr auto;
-    align-items: center;
-    gap: 14px;
-    border-bottom: 0.5px solid var(--paper-mid);
-    padding-right: 14px;
-    transition: background 0.15s;
-  }
-  .swatch-item:last-child { border-bottom: none; }
-  .swatch-item:hover { background: var(--paper-dark); }
-
-  .swatch {
-    height: 48px;
-    width: 48px;
-    flex-shrink: 0;
-  }
-
-  .swatch-name {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 13px;
-    color: var(--ink);
-  }
-
-  .swatch-hex {
-    font-family: 'Source Serif 4', serif;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-  }
-
-  /* ── PALETTE + TYPE GRID ───────────────────── */
-  .palette-type-grid {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0 var(--col-gap, 48px);
-    padding: 40px 0;
-    border-bottom: 1px solid var(--ink);
-  }
-
-  .type-entry {
-    border-bottom: 0.5px solid var(--paper-mid);
-    padding: 16px 0;
-  }
-  .type-entry:last-child { border-bottom: none; }
-
-  .type-role {
-    font-family: 'Source Serif 4', serif;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  .type-specimen {
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-
-  .type-detail {
-    font-family: 'Source Serif 4', serif;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ── FULL WIDTH IMAGE ──────────────────────── */
-  .full-image {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--ink);
-  }
-
-  .full-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .full-image .img-placeholder {
-    width: 100%;
-    min-height: 400px;
-  }
-
-  .img-caption {
-    font-family: 'Source Serif 4', serif;
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 10px;
-    display: block;
-  }
-
-  /* ── TWO COLUMN IMAGES ─────────────────────── */
-  .two-col-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--col-gap, 48px);
-    padding: 40px 0;
-    border-bottom: 1px solid var(--ink);
-  }
-
-  .two-col-images img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .two-col-images .img-placeholder {
-    width: 100%;
-    min-height: 280px;
-  }
-
-  .img-block {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* ── THREE COL IMAGES ──────────────────────── */
-  .three-col-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--ink);
-  }
-
-  .three-col-images img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .three-col-images .img-placeholder {
-    width: 100%;
-    min-height: 220px;
-  }
-
-  /* ── PULL QUOTE ────────────────────────────── */
-  .project-pull {
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-    padding: 40px 80px;
-    text-align: center;
-  }
-
-  .project-pull blockquote {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(17px, 2.2vw, 26px);
-    line-height: 1.45;
-    color: var(--ink);
-  }
-
-  .project-pull cite {
-    display: block;
-    font-family: 'Source Serif 4', serif;
-    font-style: normal;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 12px;
-  }
-
-  /* ── NEXT PROJECT ──────────────────────────── */
-  .next-project {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--ink);
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-
-  .next-project:hover { background: var(--paper-dark); margin: 0 -48px; padding: 32px 48px; }
-
-  .np-label {
-    font-family: 'Source Serif 4', serif;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .np-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .np-arrow {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: var(--ink);
-  }
-
-  @media (max-width: 860px) {
-    .project-hero { grid-template-columns: 1fr; }
-    .project-hero-image { border-right: none; border-bottom: 1px solid var(--ink); }
-    .project-hero-image .img-placeholder { min-height: 300px; }
-    .project-hero-meta { padding: 24px 0; }
-    .project-overview { grid-template-columns: 1fr; }
-    .palette-type-grid { grid-template-columns: 1fr; }
-    .two-col-images { grid-template-columns: 1fr; }
-    .three-col-images { grid-template-columns: 1fr 1fr; }
-    .project-pull { padding: 32px 20px; }
-    .next-project:hover { margin: 0; padding: 32px 0; }
-  }
-
 </style>
 </head>
 <body>
@@ -411,7 +22,8 @@
   </div>
   <div class="masthead-main">
     <div class="vol-line">Vol. I &nbsp;·&nbsp; No. 1 &nbsp;·&nbsp; The Creative Portfolio</div>
-    <h1 class="logo-title"><a href="index.html">Monologue</a></h1>    <div class="ornament">✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦</div>
+    <h1 class="logo-title"><a href="index.html">Monologue</a></h1>
+    <div class="ornament">✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦</div>
     <p class="logo-sub">"Where design meets intention, and every page tells a story."</p>
   </div>
   <nav class="main-nav">
@@ -430,260 +42,316 @@
   <div class="page-title-block" style="padding-bottom: 16px;">
     <a href="graphic-design.html#branding" class="back-link">← Back to Graphic Design</a>
     <span class="kicker">Branding · Project 02</span>
-    <h2 class="page-headline">Project Two Name</h2>
+    <h2 class="page-headline">Arnika</h2>
   </div>
 
-  <!-- HERO: IMAGE LEFT · META RIGHT -->
-  <div class="project-hero">
-    <div class="project-hero-image">
-      <!--
-        Replace placeholder with your hero image:
-        <img src="images/brand1-hero.jpg" alt="Project Two Hero">
-      -->
-      <div class="img-placeholder dark tall" style="min-height:480px;">
-        <span class="ph-label">Hero Image</span>
-        <span class="ph-sub">Replace with your image</span>
-      </div>
+  <!-- ══════════════════════════════════════════
+       § 01 — FULL-WIDTH HORIZONTAL IMAGE
+  ══════════════════════════════════════════ -->
+  <div class="intro-image-full">
+    <!-- <img src="images/brand2-hero.jpg" alt="Project Two"> -->
+    <div class="img-placeholder mid">
+      <img src="assets/images/Branding 2/brand introduction page.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+
+  <!-- BRIEF + META, below the image -->
+  <div class="intro-details-row">
+    <div class="intro-copy-col">
+      <span class="intro-eyebrow">The Brief</span>
+      <h2>A one-line description of the brand concept, set as the introduction.</h2>
+      <p>Describe the client and the brief here — who they are, what they needed, and what problem this identity was designed to solve. Give the reader context about the brand's world, its audience, and the idea that gave the mark its meaning.</p>
     </div>
 
-    <div class="project-hero-meta">
-      <div>
-        <h2 class="project-title">Project Two<br>Name Here</h2>
-        <p class="project-tagline">A one-line description of the brand concept.</p>
-      </div>
+    <div class="col-rule"></div>
 
-      <div class="project-details-list">
-        <div class="pd-item">
-          <span class="pd-label">Client</span>
-          <span class="pd-value">Client Name</span>
-        </div>
-        <div class="pd-item">
-          <span class="pd-label">Year</span>
-          <span class="pd-value">2024</span>
-        </div>
-        <div class="pd-item">
-          <span class="pd-label">Scope</span>
-          <span class="pd-value">Logo · Type · Colour · Collateral</span>
-        </div>
-        <div class="pd-item">
-          <span class="pd-label">Industry</span>
-          <span class="pd-value">Industry Here</span>
-        </div>
-        <div class="pd-item">
-          <span class="pd-label">Tools</span>
-          <span class="pd-value">Illustrator · Photoshop</span>
-        </div>
+    <div class="intro-meta-col">
+      <div class="im-item">
+        <span class="im-label">Year</span>
+        <span class="im-value">2024</span>
+      </div>
+      <div class="im-item">
+        <span class="im-label">Industry</span>
+        <span class="im-value">Industry Here</span>
+      </div>
+      <div class="im-item">
+        <span class="im-label">Tools</span>
+        <span class="im-value">Illustrator · Photoshop</span>
       </div>
     </div>
   </div>
 
-  <!-- OVERVIEW -->
-  <div class="section-divider">
-    <span class="sd-num">§ 01</span>
-    <span class="sd-label">Overview</span>
-    <span class="sd-right">The Brief &amp; Concept</span>
-  </div>
-
-  <div class="project-overview">
-    <div class="overview-col">
-      <p>Describe the client and the brief here — who they are, what they needed, and what problem this identity was designed to solve. Give the reader context about the brand's world and audience.</p>
-      <p>Talk about your initial thinking — what direction you explored first, and how the concept evolved. What was the central idea that gave this identity its meaning?</p>
-    </div>
-    <div class="overview-col">
-      <p>Describe the visual language you developed — the mark, the colour palette, the typefaces, and how all the pieces connect into a unified system. What decisions were made, and why?</p>
-      <p>Reflect on the outcome — how does the final identity represent the brand's values, personality, and ambition? What does it communicate at first glance?</p>
-    </div>
-  </div>
-
-  <!-- HERO FULL IMAGE -->
+  <!-- ══════════════════════════════════════════
+       § 02 — LOGO + LOGO THEORY BAR
+  ══════════════════════════════════════════ -->
   <div class="section-divider">
     <span class="sd-num">§ 02</span>
-    <span class="sd-label">Identity</span>
-    <span class="sd-right">Logo &amp; Mark</span>
+    <span class="sd-label">The Mark</span>
+    <span class="sd-right">Logo &amp; Theory</span>
   </div>
 
-  <div class="full-image">
-    <!--
-      <img src="images/brand1-logo.jpg" alt="Logo & Mark">
-    -->
-    <div class="img-placeholder mid" style="min-height:420px;">
-      <span class="ph-label">Logo / Mark</span>
-      <span class="ph-sub">Replace with your logo presentation</span>
+  <div class="logo-bar">
+    <div class="logo-bar-mark">
+      <span class="mark-word">Logo<br>Mark</span>
     </div>
-    <span class="img-caption">Logo system — primary mark, variations, and usage</span>
-  </div>
-
-  <!-- TWO COL — LOGO DETAIL + USAGE -->
-  <div class="two-col-images">
-    <div class="img-block">
-      <!--<img src="images/brand1-mark-detail.jpg" alt="Mark Detail">-->
-      <div class="img-placeholder dark" style="min-height:280px;">
-        <span class="ph-label">Mark Detail</span>
+    <div class="logo-bar-theory">
+      <span class="lb-eyebrow">Logo Theory</span>
+      <h3>Explain the idea behind the mark — the single thought it was built to carry.</h3>
+      <p>Walk through the reasoning: what the form references, why the proportions were chosen, and how the mark behaves at different scales. Cover the construction logic, the negative space, and the decisions that were rejected along the way.</p>
+      <div class="lb-points">
+        <span class="lb-point">Concept<br>What the mark represents</span>
+        <span class="lb-point">Form<br>How the shape was built</span>
+        <span class="lb-point">Behaviour<br>How it scales and adapts</span>
       </div>
-      <span class="img-caption">Symbol detail — construction &amp; geometry</span>
-    </div>
-    <div class="img-block">
-      <!--<img src="images/brand1-wordmark.jpg" alt="Wordmark">-->
-      <div class="img-placeholder light" style="min-height:280px;">
-        <span class="ph-label">Wordmark</span>
-      </div>
-      <span class="img-caption">Wordmark — type treatment &amp; spacing</span>
     </div>
   </div>
 
-  <!-- COLOUR + TYPOGRAPHY -->
+  <!-- ══════════════════════════════════════════
+       § 03 — THREE TYPEFACES OF THE LOGO
+  ══════════════════════════════════════════ -->
   <div class="section-divider">
     <span class="sd-num">§ 03</span>
-    <span class="sd-label">Colour &amp; Typography</span>
-    <span class="sd-right">Visual System</span>
+    <span class="sd-label">Typography</span>
+    <span class="sd-right">Three Treatments</span>
+  </div>
+
+  <div class="typefaces-row">
+    <div class="face-card">
+      <span class="face-num">01</span>
+      <span class="face-word serif-display">Logo</span>
+      <div class="face-meta">
+        <span class="face-name">Playfair Display</span>
+        <span class="face-use">Bold display — primary lockup</span>
+      </div>
+    </div>
+    <div class="face-card">
+      <span class="face-num">02</span>
+      <span class="face-word serif-italic">Logo</span>
+      <div class="face-meta">
+        <span class="face-name">IM Fell English</span>
+        <span class="face-use">Italic serif — editorial variant</span>
+      </div>
+    </div>
+    <div class="face-card">
+      <span class="face-num">03</span>
+      <span class="face-word serif-body">Logo</span>
+      <div class="face-meta">
+        <span class="face-name">Libre Baskerville</span>
+        <span class="face-use">Set serif — small-scale use</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       § 04 — LOGO SKETCH & DEVELOPMENT
+  ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <span class="sd-num">§ 04</span>
+    <span class="sd-label">Process</span>
+    <span class="sd-right">Sketch &amp; Development</span>
+  </div>
+
+  <div class="work-feature">
+    <div class="work-feature-img">
+      <!-- <img src="images/brand2-sketch.jpg" alt="Logo sketch"> -->
+      <div class="img-placeholder mid">
+        <span class="ph-label">Logo Sketch</span>
+        <span class="ph-sub">Replace with your sketch</span>
+      </div>
+    </div>
+    <div class="work-feature-text">
+      <h3 class="work-title">From rough mark to final form.</h3>
+      <p class="work-body">Describe the early sketch here — the first pencil pass, the ideas that were tested on paper before anything went digital. Note what changed between this sketch and the final mark: proportions that were refined, details that were dropped, or a version of the concept that didn't survive but shaped the outcome.</p>
+      <div class="work-meta">
+        <span class="meta-item"><strong>Medium</strong>Pencil on paper</span>
+        <span class="meta-item"><strong>Stage</strong>Concept development</span>
+        <span class="meta-item"><strong>Iterations</strong>Number of rounds here</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       § 05 — COLOUR PALETTE & TYPOGRAPHY
+  ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <span class="sd-num">§ 05</span>
+    <span class="sd-label">Palette</span>
+    <span class="sd-right">Colour &amp; Type</span>
   </div>
 
   <div class="palette-type-grid">
 
-    <!-- SWATCHES — edit colours to match your project -->
+    <!-- COLOUR PALETTE -->
     <div class="palette-col">
       <span class="kicker" style="margin-bottom:14px;display:block;">Colour Palette</span>
       <div class="swatches">
         <div class="swatch-item">
-          <div class="swatch" style="background:#1c1c1c;"></div>
-          <span class="swatch-name">Colour One</span>
-          <span class="swatch-hex">#1C1C1C</span>
+          <div class="swatch" style="background:#000000;"></div>
+          <span class="swatch-name">Colour Name</span>
+          <span class="swatch-hex">#000000</span>
         </div>
         <div class="swatch-item">
-          <div class="swatch" style="background:#f5f0e8;"></div>
-          <span class="swatch-name">Colour Two</span>
-          <span class="swatch-hex">#F5F0E8</span>
+          <div class="swatch" style="background:#000000;"></div>
+          <span class="swatch-name">Colour Name</span>
+          <span class="swatch-hex">#000000</span>
         </div>
         <div class="swatch-item">
-          <div class="swatch" style="background:#8a6c00;"></div>
-          <span class="swatch-name">Colour Three</span>
-          <span class="swatch-hex">#8A6C00</span>
+          <div class="swatch" style="background:#000000;"></div>
+          <span class="swatch-name">Colour Name</span>
+          <span class="swatch-hex">#000000</span>
         </div>
         <div class="swatch-item">
-          <div class="swatch" style="background:#d4c9b8;"></div>
-          <span class="swatch-name">Colour Four</span>
-          <span class="swatch-hex">#D4C9B8</span>
+          <div class="swatch" style="background:#000000;"></div>
+          <span class="swatch-name">Colour Name</span>
+          <span class="swatch-hex">#000000</span>
         </div>
       </div>
     </div>
 
     <div class="col-rule" style="align-self:stretch;"></div>
 
-    <!-- TYPOGRAPHY — edit to match your project fonts -->
+    <!-- TYPOGRAPHY -->
     <div class="type-col">
       <span class="kicker" style="margin-bottom:14px;display:block;">Typography</span>
 
       <div class="type-entry">
-        <span class="type-role">Display / Heading</span>
-        <p class="type-specimen" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;">Display Typeface</p>
-        <span class="type-detail">DISPLAY · BOLD · PRIMARY HEADINGS</span>
+        <span class="type-role">Primary Typeface</span>
+        <p class="type-specimen" style="font-family:'Playfair Display',serif; font-size:26px; font-weight:900; line-height:1.1;">Aa Bb Cc</p>
+        <span class="type-detail" style="display:block; margin-top:6px;">Playfair Display · Headlines &amp; Logotype</span>
       </div>
 
       <div class="type-entry">
-        <span class="type-role">Secondary / Accent</span>
-        <p class="type-specimen" style="font-family:'IM Fell English',serif;font-style:italic;font-size:24px;">Accent Typeface</p>
-        <span class="type-detail">SERIF ITALIC · SUBHEADINGS &amp; ACCENTS</span>
+        <span class="type-role">Secondary Typeface</span>
+        <p class="type-specimen" style="font-family:'IM Fell English',serif; font-style:italic; font-size:22px; line-height:1.1;">Aa Bb Cc</p>
+        <span class="type-detail" style="display:block; margin-top:6px;">IM Fell English · Editorial &amp; Captions</span>
       </div>
 
       <div class="type-entry">
-        <span class="type-role">Body / Text</span>
-        <p class="type-specimen" style="font-family:'Libre Baskerville',serif;font-size:14px;line-height:1.6;">Body Typeface — The quick brown fox jumps over the lazy dog.</p>
-        <span class="type-detail">SERIF · REGULAR · BODY TEXT</span>
+        <span class="type-role">Body Typeface</span>
+        <p class="type-specimen" style="font-family:'Libre Baskerville',serif; font-weight:700; font-size:18px; line-height:1.1;">Aa Bb Cc</p>
+        <span class="type-detail" style="display:block; margin-top:6px;">Libre Baskerville · Body &amp; Set Copy</span>
       </div>
+
     </div>
 
   </div>
 
-  <!-- PULL QUOTE -->
-  <div class="project-pull">
-    <blockquote>"Write a short quote that captures the essence of this project or your design philosophy behind it."</blockquote>
-    <cite>Your name · Project Two Name</cite>
-  </div>
-
-  <!-- COLLATERAL / APPLICATIONS -->
+  <!-- ══════════════════════════════════════════
+       § 06 — MOODBOARD / COLLAGE
+  ══════════════════════════════════════════ -->
   <div class="section-divider">
-    <span class="sd-num">§ 04</span>
-    <span class="sd-label">Applications</span>
-    <span class="sd-right">Collateral &amp; Usage</span>
-  </div>
+    <span class="sd-num">§ 06</span>
+    <span class="sd-label">Moodboard</span>
+    <span class="sd-right">Visual Direction</span>
+</div>
 
-  <div class="full-image">
-    <!--<img src="images/brand1-collateral.jpg" alt="Collateral">-->
-    <div class="img-placeholder dark" style="min-height:400px;">
-      <span class="ph-label">Brand Collateral</span>
-      <span class="ph-sub">Business cards, letterhead, packaging, etc.</span>
+<div class="brand-collage">
+    <div class="piece p1">
+      <img src="./assets/images/Branding 2/collage 01.jpg" style="width:100%;height:100%;object-fit:cover;">
     </div>
-    <span class="img-caption">Brand collateral — full system in use</span>
-  </div>
+   <div class="piece p2">
+      <img src="./assets/images/Branding 2/collage 02.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p3">
+      <img src="./assets/images/Branding 2/collage 03.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p4">
+      <img src="./assets/images/Branding 2/collage 04.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p5">
+      <img src="./assets/images/Branding 2/collage 05.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p7">
+      <img src="./assets/images/Branding 2/collage 07.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p8">
+      <img src="./assets/images/Branding 2/collage 08.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p9">
+      <img src="./assets/images/Branding 2/collage 09.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p10">
+      <img src="./assets/images/Branding 2/collage 10.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p11">
+      <img src="./assets/images/Branding 2/collage 11.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="piece p13">
+      <img src="./assets/images/Branding 2/collage 13.jpg" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+</div>
 
-  <div class="three-col-images">
-    <div class="img-block">
-      <!--<img src="images/brand1-app1.jpg" alt="Application 01">-->
-      <div class="img-placeholder mid" style="min-height:220px;">
-        <span class="ph-label">Application 01</span>
-      </div>
-      <span class="img-caption">Business card</span>
-    </div>
-    <div class="img-block">
-      <!--<img src="images/brand1-app2.jpg" alt="Application 02">-->
-      <div class="img-placeholder light" style="min-height:220px;">
-        <span class="ph-label">Application 02</span>
-      </div>
-      <span class="img-caption">Letterhead</span>
-    </div>
-    <div class="img-block">
-      <!--<img src="images/brand1-app3.jpg" alt="Application 03">-->
-      <div class="img-placeholder dark" style="min-height:220px;">
-        <span class="ph-label">Application 03</span>
-      </div>
-      <span class="img-caption">Packaging / other</span>
-    </div>
-  </div>
-
-  <!-- MOCKUPS -->
+   <!-- ══════════════════════════════════════════
+       § 07 — Brochure
+  ══════════════════════════════════════════ -->
   <div class="section-divider">
-    <span class="sd-num">§ 05</span>
-    <span class="sd-label">Mockups</span>
-    <span class="sd-right">In Context</span>
+    <span class="sd-num">§ 07</span>
+    <span class="sd-label">Packaging</span>
+    <span class="sd-right">Applied Design</span>
   </div>
-
-  <div style="display:flex; flex-direction:column; gap:20px; padding:40px 0 48px;">
-
-    <div class="img-block">
-      <!--<img src="images/brand1-mockup1.jpg" alt="Mockup 01">-->
-      <div class="img-placeholder mid" style="min-height:420px;">
-        <span class="ph-label">Large Mockup</span>
-        <span class="ph-sub">Primary brand in context</span>
+ 
+  <div class="packaging-showcase reverse">
+    <div class="packaging-visual">
+      <div class="pv-back">
+        <img src="./assets/images/Branding 2/brochure back.jpg" alt="Brochure design Back" style="width:100%;height:100%;object-fit:cover;">
       </div>
-      <span class="img-caption">Mockup 01 — primary context</span>
-    </div>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-      <div class="img-block">
-        <!--<img src="images/brand1-mockup2.jpg" alt="Mockup 02">-->
-        <div class="img-placeholder dark" style="min-height:280px;">
-          <span class="ph-label">Mockup 02</span>
-        </div>
-        <span class="img-caption">Mockup 02</span>
-      </div>
-      <div class="img-block">
-        <!--<img src="images/brand1-mockup3.jpg" alt="Mockup 03">-->
-        <div class="img-placeholder light" style="min-height:280px;">
-          <span class="ph-label">Mockup 03</span>
-        </div>
-        <span class="img-caption">Mockup 03</span>
+      <div class="pv-front">
+        <img src="./assets/images/Branding 2/brochure front.png" alt="Brochure design Front" style="width:100%;height:100%;object-fit:cover;">
       </div>
     </div>
+    <div class="packaging-copy">
+      <span class="pc-eyebrow">Packaging</span>
+      <h3>A one-line description of the secondary piece.</h3>
+      <p>Describe a secondary piece here — an inner sleeve, a label, or a companion item within the same system. Explain how it relates back to the primary packaging and where consistency mattered most across the set.</p>
+      <p>Describe a secondary piece here — an inner sleeve, a label, or a companion item within the same system. Explain how it relates back to the primary packaging and where consistency mattered most across the set.</p>
+      <div class="work-meta">
+        <span class="meta-item"><strong>Material</strong>Material name here</span>
+        <span class="meta-item"><strong>Finish</strong>Print / finish detail</span>
+        <span class="meta-item"><strong>Dimensions</strong>Size here</span>
+      </div>
+    </div>
+  </div>
+ 
 
+  <!-- ══════════════════════════════════════════
+       § 08 — BRAND INTRO VIDEO (horizontal)
+  ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <span class="sd-num">§ 08</span>
+    <span class="sd-label">Motion</span>
+    <span class="sd-right">Brand Intro Video</span>
   </div>
 
-  <!-- NEXT PROJECT -->
-  <a href="brand-project-01.html" class="next-project">
+  <div class="film-section" style="border-bottom: none;">
+    <div class="film-embed-wrap">
+      <!-- Replace this block with a real embed, e.g.:
+      <iframe
+        width="100%" height="100%"
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+        title="Brand Intro Video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      -->
+      <div class="film-poster" id="brand-video-poster">
+        <div class="film-poster-inner">
+          <div class="play-btn">▶</div>
+          <span class="film-poster-title">Brand Intro Video</span>
+          <span class="film-poster-year">01:00 · Landscape</span>
+        </div>
+      </div>
+    </div>
+    <p class="caption" style="margin-top: 14px;">A short walkthrough of the identity — logo, palette, type and packaging in motion.</p>
+  </div>
+
+  <!-- Previous PROJECT -->
+  <a href="brand-project01.html" class="next-project">
     <div>
       <span class="np-label">Previous Project</span>
-      <span class="np-title">Project Two Name Here</span>
+      <span class="np-title">Vestura</span>
     </div>
-    <span class="np-arrow">←</span>
+    <span class="np-arrow">→</span>
   </a>
 
 </main>
