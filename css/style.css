@@ -1117,6 +1117,14 @@ main {
   font-family: 'WonderCity';
   src: url('../assets/Wondercity.otf') format('opentype');
 }
+@font-face {
+  font-family: 'Basgira';
+  src: url('../assets/BasgiraRegular-1jL1Z.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/Poppins-Regular.ttf') format('truetype');
+}
 .swatch {
   height: 48px;
   width: 48px;
@@ -2543,3 +2551,4 @@ main {
     }
     .collage-note { display: none; }
   }
+  
