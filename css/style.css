@@ -2092,6 +2092,24 @@ main {
     color: var(--ink);
   }
 
+  /* ── Previous PROJECT ──────────────────────────── */
+  .next-project.previous-project{
+    display:grid;
+    grid-template-columns: 60px 1fr;
+    align-items:center;
+}
+
+.next-project.previous-project .np-arrow{
+    grid-column:1;
+    justify-self:start;
+    font-size:32px;
+}
+
+.next-project.previous-project > div{
+    grid-column:2;
+    justify-self:end;
+    text-align:right;
+}
   /* ══════════════════════════════════════════
      § 06 — MOODBOARD / COLLAGE
      Overlapping, layered tiles pinned at
