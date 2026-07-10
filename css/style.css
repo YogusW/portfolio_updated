@@ -2594,7 +2594,6 @@ main {
 
 .ws-tile{
     position:absolute;
-    border:1px solid var(--ink);
     overflow:hidden;
 }
 
@@ -2649,7 +2648,7 @@ main {
 
 .ws-text.ws-text3{
     left:660px;
-    top:520px;
+    top:550px;
 }
 
 /* ---------- Button ---------- */
