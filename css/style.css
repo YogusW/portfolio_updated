@@ -241,6 +241,197 @@ main {
   margin-bottom: 10px;
 }
 
+/* ── INTRO COLLAGE ROW (moodboard + supporting copy, side by side) ── */
+.intro-collage-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.intro-copy {
+  padding-top: 28px;
+}
+
+.intro-copy p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 20px;
+  max-width: 320px;
+}
+
+.intro-cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.intro-cta em {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+.intro-cta .cta-arrow {
+  font-style: normal;
+}
+
+.intro-collage .cp {
+  position: absolute;
+  box-shadow: 0 10px 22px rgba(13, 13, 13, 0.2);
+  opacity: 0;
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+.intro-collage {
+  position: relative;
+  width: 58%;
+  max-width: 460px;
+  aspect-ratio: 9/5;
+  flex-shrink: 0;
+}
+
+.intro-collage .polaroid {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.intro-collage .cp-photo-a {
+  left: 11%;
+  top: 0;
+  width: 53%;
+  height: 73%;
+  z-index: 2;
+  animation-name: tiltInA;
+  animation-delay: 0.05s;
+}
+
+.intro-collage .cp-photo-b {
+  left: 0;
+  bottom: 7%;
+  width: 33%;
+  height: 50%;
+  z-index: 3;
+  animation-name: tiltInB;
+  animation-delay: 0.2s;
+}
+
+.intro-collage .cp-note {
+  right: 6px;
+  top: 30%;
+  width: 31%;
+  height: 10%;
+  z-index: 1;
+  background: var(--paper-dark);
+  border: 1px solid var(--ink);
+  clip-path: polygon(0% 2%, 8% 0%, 22% 3%, 40% 0%, 60% 2%, 80% 0%, 100% 3%, 100% 100%, 0% 100%);
+  padding: 12px 11px;
+  display: flex;
+  align-items: flex-end;
+  animation-name: tiltInNote;
+  animation-delay: 0.35s;
+}
+
+.intro-collage .note-text {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.intro-collage .cp-quote {
+  left: 52%;
+  bottom: 4%;
+  width: 46%;
+  height: 57%;
+  z-index: 2;
+  background: var(--ink);
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  animation-name: tiltInQuote;
+  animation-delay: 0.5s;
+}
+
+.intro-collage .cp-quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--paper);
+}
+
+.intro-collage .tape {
+  position: absolute;
+  width: 54px;
+  height: 18px;
+  background: rgba(232, 222, 200, 0.72);
+  border: 1px solid rgba(13, 13, 13, 0.08);
+  box-shadow: 0 3px 6px rgba(13, 13, 13, 0.15);
+  z-index: 4;
+  opacity: 0;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+.intro-collage .tape-1 {
+  left: 6%;
+  top: -3%;
+  animation-name: tiltInTape1;
+  animation-delay: 0.65s;
+}
+
+.intro-collage .tape-2 {
+  left: 44%;
+  top: 30%;
+  animation-name: tiltInTape2;
+  animation-delay: 0.75s;
+}
+
+.intro-collage .tape-3 {
+  left: 27%;
+  bottom: 38%;
+  animation-name: tiltInTape3;
+  animation-delay: 0.85s;
+}
+
+@keyframes tiltInA     { from { opacity: 0; transform: translateY(10px) rotate(-3deg); } to { opacity: 1; transform: rotate(-3deg); } }
+@keyframes tiltInB     { from { opacity: 0; transform: translateY(10px) rotate(-2deg); } to { opacity: 1; transform: rotate(-2deg); } }
+@keyframes tiltInNote  { from { opacity: 0; transform: translateY(10px) rotate(4deg);  } to { opacity: 1; transform: rotate(4deg);  } }
+@keyframes tiltInQuote { from { opacity: 0; transform: translateY(10px) rotate(3deg);  } to { opacity: 1; transform: rotate(3deg);  } }
+@keyframes tiltInTape1 { from { opacity: 0; transform: rotate(-10deg); } to { opacity: 1; transform: rotate(-10deg); } }
+@keyframes tiltInTape2 { from { opacity: 0; transform: rotate(8deg);   } to { opacity: 1; transform: rotate(8deg);   } }
+@keyframes tiltInTape3 { from { opacity: 0; transform: rotate(-8deg);  } to { opacity: 1; transform: rotate(-8deg); } }
+
+@media (max-width: 700px) {
+  .intro-collage-row {
+    flex-direction: column;
+  }
+  .intro-collage {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: unset;
+    height: 420px;
+  }
+  .intro-collage .cp-photo-a { width: 58%; height: 70%; }
+  .intro-collage .cp-photo-b { width: 42%; height: 40%; }
+  .intro-collage .cp-note { width: 34%; height: 34%; }
+  .intro-collage .cp-quote { width: 50%; height: 44%; }
+}
+
 .bio-name {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
@@ -2551,4 +2742,3 @@ main {
     }
     .collage-note { display: none; }
   }
-  
