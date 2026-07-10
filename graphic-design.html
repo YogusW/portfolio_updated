@@ -20,6 +20,72 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+  /* ── ILLUSTRATION COLLAGE (scattered, tilted tiles) ── */
+  .illustration-collage {
+    position: relative;
+    width: 100%;
+    max-width: 1250px;
+    height: 800px;
+    margin: 8px auto 0;
+    overflow: hidden; /* safety net: nothing inside should ever be able to push page-level scroll */
+  }
+
+  /* one wrapper per item — holds the photo AND its caption, so the caption
+     is always sized to the photo's width, never the whole collage width */
+  .ic-item {
+    position: absolute;
+    transition: transform 0.25s ease;
+  }
+
+  .ic-photo {
+    width: 100%;
+    box-shadow: 0 10px 22px rgba(13, 13, 13, 0.18);
+    transition: box-shadow 0.25s ease;
+    overflow: hidden;
+  }
+
+  .ic-photo .img-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: unset;
+    overflow: hidden;
+  }
+
+  .ic-item:hover { z-index: 20 !important; }
+  .ic-item:hover .ic-photo { box-shadow: 0 16px 30px rgba(13, 13, 13, 0.28); }
+
+  .ic-caption { margin-top: 10px; }
+
+  .ic-item.ic-1 { left: 9%;  top: 2%;  width: 17%; transform: rotate(-2deg); z-index: 2; }
+  .ic-item.ic-2 { left: 40%; top: 34%; width: 18%; transform: rotate(1deg);  z-index: 3; }
+  .ic-item.ic-3 { left: 64%; top: 0%;  width: 23%; transform: rotate(3deg);  z-index: 1; }
+  .ic-item.ic-4 { left: 12%;  top: 55%; width: 18%; transform: rotate(-3deg); z-index: 2; }
+  .ic-item.ic-5 { left: 66%; top: 52%; width: 27%; transform: rotate(2deg);  z-index: 2; }
+
+  .ic-item.ic-1 .ic-photo,
+  .ic-item.ic-2 .ic-photo,
+  .ic-item.ic-4 .ic-photo { aspect-ratio: 3/4; }
+  .ic-item.ic-3 .ic-photo { aspect-ratio: 4/5; }
+  .ic-item.ic-5 .ic-photo { aspect-ratio: 4/3; }
+
+  @media (max-width: 860px) {
+    .illustration-collage {
+      position: static;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      overflow: visible;
+    }
+    .ic-item {
+      position: static !important;
+      width: 100% !important;
+      transform: none !important;
+    }
+    .ic-item .ic-photo { aspect-ratio: 4/3 !important; }
+  }
   .character-row {
     display: flex;
     align-items: flex-start;
@@ -410,12 +476,27 @@
       </div>
     </div>
 
-    <div class="masonry-grid">
-      <div class="masonry-item tall"><div class="img-placeholder mid"><img src="./assets/images/Illustration/05.jpg" style="height: 100%; width: 100%;"></div><span class="col-tag">Series</span><h4 class="grid-title">Illustration 04</h4></div>
-      <div class="masonry-item tall"><div class="img-placeholder light"><img src="./assets/images/Illustration/08.jpg" style="height: 100%; width: 100%;"></div><span class="col-tag">Editorial</span><h4 class="grid-title">Illustration 05</h4></div>
-      <div class="masonry-item tall"><div class="img-placeholder dark"><img src="./assets/images/Illustration/09.jpg" style="height: 100%; width: 100%;"></div><span class="col-tag">Conceptual</span><h4 class="grid-title">Illustration 06</h4></div>
-      <div class="masonry-item tall"><div class="img-placeholder light"><img src="./assets/images/Illustration/06.jpg" style="height: 100%; width: 100%;"></div><span class="col-tag">Decorative</span><h4 class="grid-title">Illustration 07</h4></div>
-      <div class="masonry-item tall"><div class="img-placeholder mid"><img src="./assets/images/Illustration/07.jpg" style="width: 100%; height: 100%;"></div><span class="col-tag">Series</span><h4 class="grid-title">Illustration 08</h4></div>
+    <div class="illustration-collage">
+      <div class="ic-item ic-1">
+        <div class="ic-photo"><div class="img-placeholder mid"><img src="./assets/images/Illustration/05.jpg" style="height: 100%; width: 100%; object-fit: cover;"></div></div>
+        <div class="ic-caption"><span class="col-tag">Series</span><h4 class="grid-title">Illustration 04</h4></div>
+      </div>
+      <div class="ic-item ic-2">
+        <div class="ic-photo"><div class="img-placeholder light"><img src="./assets/images/Illustration/08.jpg" style="height: 100%; width: 100%; object-fit: cover;"></div></div>
+        <div class="ic-caption"><span class="col-tag">Editorial</span><h4 class="grid-title">Illustration 05</h4></div>
+      </div>
+      <div class="ic-item ic-3">
+        <div class="ic-photo"><div class="img-placeholder dark"><img src="./assets/images/Illustration/09.jpg" style="height: 100%; width: 100%; object-fit: cover;"></div></div>
+        <div class="ic-caption"><span class="col-tag">Conceptual</span><h4 class="grid-title">Illustration 06</h4></div>
+      </div>
+      <div class="ic-item ic-4">
+        <div class="ic-photo"><div class="img-placeholder light"><img src="./assets/images/Illustration/06.jpg" style="height: 100%; width: 100%; object-fit: cover;"></div></div>
+        <div class="ic-caption"><span class="col-tag">Decorative</span><h4 class="grid-title">Illustration 07</h4></div>
+      </div>
+      <div class="ic-item ic-5">
+        <div class="ic-photo"><div class="img-placeholder mid"><img src="./assets/images/Illustration/07.jpg" style="height: 100%; width: 100%; object-fit: cover;"></div></div>
+        <div class="ic-caption"><span class="col-tag">Series</span><h4 class="grid-title">Illustration 08</h4></div>
+      </div>
     </div>
   </div>
 
@@ -621,9 +702,8 @@
     <span class="footer-copy">© 2026 · All rights reserved</span>
     <div class="footer-links">
       <a href="contact.html">Contact</a>
-      <a href="https://www.linkedin.com/in/bhumi-chopra-260aa1360/">LinkedIn</a>
-      <a href="https://www.behance.net/bhumichopra">Behance</a>
       <a href="https://www.instagram.com/bhumiidesign/">Instagram</a>
+      <a href="https://www.behance.net/bhumichopra">Behance</a>
     </div>
   </div>
 </footer>
